@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alencar e Sociedade</title>
+<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a href="index.html" class="logo">Alencar e Sociedade</a>
+    <nav class="nav">
+      <a href="index.html">Início</a>
+      <a href="sobre.html">Sobre</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wave" aria-hidden="true">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+    <path d="M0,30 C200,60 400,0 600,30 C800,60 1000,0 1200,30 L1200,60 L0,60 Z" fill="var(--amber)"/>
+  </svg>
+</div>
+
+
+<main class="wrap">
+
+  <article class="hero">
+    <p class="hero__meta">
+      <span class="tag tag--category">Cidade & Sociedade</span>
+      <span class="tag tag--lang">PT</span>
+    </p>
+    <h1 class="hero__title">O espaço urbano como campo de disputa: leituras cotidianas da cidade</h1>
+    <p class="hero__dek">Da fila do ônibus ao desenho das praças, práticas do dia a dia revelam como o poder se organiza no território — e como ele pode ser lido, questionado e redesenhado.</p>
+    <p class="hero__byline">Por Adryan de Alencar · 6 min de leitura</p>
+    <a class="hero__link" href="noticias/espaco-urbano-disputa.html">Ler matéria completa</a>
+  </article>
+
+  <section class="grid" aria-label="Matérias recentes">
+
+    <article class="card">
+      <p class="card__meta">
+        <span class="tag tag--category">Teoria Política</span>
+        <span class="tag tag--lang">EN</span>
+      </p>
+      <h2 class="card__title"><a href="noticias/hegemony-fragmented-publics.html">Hegemony without consensus: rereading Gramsci in fragmented publics</a></h2>
+      <p class="card__dek">What a concept built for mass parties still explains about persuasion in a splintered media landscape.</p>
+    </article>
+
+    <article class="card">
+      <p class="card__meta">
+        <span class="tag tag--category">Trabalho & RH</span>
+        <span class="tag tag--lang">PT</span>
+      </p>
+      <h2 class="card__title"><a href="noticias/merito-no-trabalho.html">Quem decide o que conta como mérito dentro de uma empresa</a></h2>
+      <p class="card__dek">Critérios de avaliação parecem neutros, mas carregam escolhas sobre que tipo de trabalho — e de trabalhador — é valorizado.</p>
+    </article>
+
+    <article class="card">
+      <p class="card__meta">
+        <span class="tag tag--category">Teoria Política</span>
+        <span class="tag tag--lang">PT</span>
+      </p>
+      <h2 class="card__title"><a href="noticias/liberdade-negativa-positiva.html">Liberdade negativa, liberdade positiva: por que a distinção de Berlin ainda importa</a></h2>
+      <p class="card__dek">Duas formas de pensar liberdade explicam boa parte do desacordo em debates públicos que parecem, à primeira vista, ser sobre outra coisa.</p>
+    </article>
+
+  </section>
+
+  <section class="search" aria-label="Buscar matérias">
+    <h2 class="search__title">Buscar por palavra-chave</h2>
+    <input type="search" id="busca" class="search__input" placeholder="ex.: Gramsci, cidade, mérito...">
+    <ul id="resultados-busca" class="search__resultados"></ul>
+  </section>
+
+</main>
+
+
+<div class="wave wave--footer" aria-hidden="true">
+  <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
+    <path d="M0,20 C200,50 400,0 600,20 C800,50 1000,0 1200,20 L1200,60 L0,60 Z" fill="var(--petrol)" opacity="0.4"/>
+    <path d="M0,35 C200,10 400,60 600,35 C800,10 1000,60 1200,35 L1200,60 L0,60 Z" fill="var(--amber)"/>
+  </svg>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>Alencar e Sociedade — ciências sociais, teoria política e cotidiano.</p>
+  </div>
+</footer>
+
+
+<script src="js/busca.js" data-index="search-index.json"></script>
+
+
+</body>
+</html>

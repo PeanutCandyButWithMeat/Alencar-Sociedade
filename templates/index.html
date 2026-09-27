@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="wrap">
+
+  {% if destaque %}
+  <article class="hero">
+    <p class="hero__meta">
+      <span class="tag tag--category">{{ destaque.categoria }}</span>
+      <span class="tag tag--lang">{{ destaque.idioma }}</span>
+    </p>
+    <h1 class="hero__title">{{ destaque.titulo }}</h1>
+    <p class="hero__dek">{{ destaque.resumo }}</p>
+    <p class="hero__byline">Por {{ destaque.autor }} · {{ destaque.tempo_leitura }}</p>
+    <a class="hero__link" href="noticias/{{ destaque.slug }}.html">Ler matéria completa</a>
+  </article>
+  {% endif %}
+
+  <section class="grid" aria-label="Matérias recentes">
+    {% for m in materias %}
+    <article class="card">
+      <p class="card__meta">
+        <span class="tag tag--category">{{ m.categoria }}</span>
+        <span class="tag tag--lang">{{ m.idioma }}</span>
+      </p>
+      <h2 class="card__title"><a href="noticias/{{ m.slug }}.html">{{ m.titulo }}</a></h2>
+      <p class="card__dek">{{ m.resumo }}</p>
+    </article>
+    {% endfor %}
+  </section>
+
+  <section class="search" aria-label="Buscar matérias">
+    <h2 class="search__title">Buscar por palavra-chave</h2>
+    <input type="search" id="busca" class="search__input" placeholder="ex.: Gramsci, cidade, mérito...">
+    <ul id="resultados-busca" class="search__resultados"></ul>
+  </section>
+
+</main>
+{% endblock %}
+{% block scripts %}
+<script src="{{ base_path }}js/busca.js" data-index="{{ base_path }}search-index.json"></script>
+{% endblock %}

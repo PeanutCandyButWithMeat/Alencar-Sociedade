@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="wrap wrap--article">
+  <article class="article">
+    <p class="article__meta">
+      <span class="tag tag--category">{{ categoria }}</span>
+      <span class="tag tag--lang">{{ idioma }}</span>
+    </p>
+    <h1 class="article__title">{{ titulo }}</h1>
+    <p class="article__byline">Por {{ autor }} · {{ tempo_leitura }}</p>
+    <div class="article__body">
+      {{ conteudo_html|safe }}
+    </div>
+  </article>
+  <p class="article__back"><a href="{{ base_path }}index.html">&larr; Voltar para a página inicial</a></p>
+</main>
+{% endblock %}

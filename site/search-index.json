@@ -1,0 +1,55 @@
+[
+  {
+    "titulo": "O espaço urbano como campo de disputa: leituras cotidianas da cidade",
+    "categoria": "Cidade & Sociedade",
+    "idioma": "PT",
+    "palavras_chave": [
+      "espaço urbano",
+      "cotidiano",
+      "poder",
+      "cidade",
+      "território"
+    ],
+    "resumo": "Da fila do ônibus ao desenho das praças, práticas do dia a dia revelam como o poder se organiza no território — e como ele pode ser lido, questionado e redesenhado.",
+    "url": "noticias/espaco-urbano-disputa.html"
+  },
+  {
+    "titulo": "Hegemony without consensus: rereading Gramsci in fragmented publics",
+    "categoria": "Teoria Política",
+    "idioma": "EN",
+    "palavras_chave": [
+      "gramsci",
+      "hegemony",
+      "political theory",
+      "media"
+    ],
+    "resumo": "What a concept built for mass parties still explains about persuasion in a splintered media landscape.",
+    "url": "noticias/hegemony-fragmented-publics.html"
+  },
+  {
+    "titulo": "Quem decide o que conta como mérito dentro de uma empresa",
+    "categoria": "Trabalho & RH",
+    "idioma": "PT",
+    "palavras_chave": [
+      "mérito",
+      "RH",
+      "trabalho",
+      "avaliação de desempenho"
+    ],
+    "resumo": "Critérios de avaliação parecem neutros, mas carregam escolhas sobre que tipo de trabalho — e de trabalhador — é valorizado.",
+    "url": "noticias/merito-no-trabalho.html"
+  },
+  {
+    "titulo": "Liberdade negativa, liberdade positiva: por que a distinção de Berlin ainda importa",
+    "categoria": "Teoria Política",
+    "idioma": "PT",
+    "palavras_chave": [
+      "isaiah berlin",
+      "liberdade",
+      "teoria política",
+      "filosofia política"
+    ],
+    "resumo": "Duas formas de pensar liberdade explicam boa parte do desacordo em debates públicos que parecem, à primeira vista, ser sobre outra coisa.",
+    "url": "noticias/liberdade-negativa-positiva.html"
+  }
+]
