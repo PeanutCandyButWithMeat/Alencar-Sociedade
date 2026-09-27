@@ -23,7 +23,7 @@ RAIZ = Path(__file__).parent
 CONTEUDO_DIR = RAIZ / "content"
 TEMPLATES_DIR = RAIZ / "templates"
 STATIC_DIR = RAIZ / "static"
-SAIDA_DIR = RAIZ / "site"
+SAIDA_DIR = RAIZ / "docs"
 
 env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
 
