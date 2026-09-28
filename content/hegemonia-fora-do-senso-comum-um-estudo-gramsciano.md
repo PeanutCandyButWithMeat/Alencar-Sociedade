@@ -7,7 +7,7 @@ data: 2026-09-27
 autor: "Adryan de Alencar"
 tempo_leitura: "6 min de leitura"
 resumo: "A hegemonia além do senso comum, o que ela é sob a perspectiva de Antonio Gramsci"
-destaque: true
+destaque: false
 ---
 
 Antonio Gramsci, um dos mais influentes teóricos do século XX, reelaborou diversos conceitos que ainda hoje ocupam lugar central nas Ciências Sociais. Muitas vezes, entretanto, essas contribuições são utilizadas sem que sua origem gramsciana seja explicitamente reconhecida. A hegemonia é um dos exemplos mais importantes. Embora o termo tenha origem no grego antigo e originalmente significasse algo próximo de liderança, comando ou predominância, Gramsci lhe atribuiu um significado muito mais complexo. Para ele, a hegemonia diz respeito ao processo pelo qual um grupo social se torna dirigente, conquistando outros grupos por meio da construção de consensos e da difusão de uma determinada visão de mundo.
