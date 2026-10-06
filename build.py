@@ -1,16 +1,3 @@
-"""
-Gerador estático do site Alencar e Sociedade.
-
-Uso:
-    python build.py
-
-Lê tudo que está em content/*.md, gera o HTML de cada página em site/,
-e cria site/search-index.json para a busca por palavra-chave.
-
-Para publicar uma matéria nova: copie um arquivo de content/, edite os
-metadados e o texto, rode este script de novo.
-"""
-
 import json
 import shutil
 from pathlib import Path
