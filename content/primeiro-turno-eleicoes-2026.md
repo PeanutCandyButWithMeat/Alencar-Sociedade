@@ -7,7 +7,7 @@ data: 2026-10-06
 autor: "Adryan de Alencar"
 tempo_leitura: "7 min de leitura"
 resumo: "A surpreendente liderança de Flávio Bolsonaro no primeiro turno revela, mais do que uma disputa eleitoral, uma crise da democracia representativa brasileira. A partir dos conceitos de egoísmo e alienação, o texto discute como valores conservadores, discursos meritocráticos e percepções imediatistas da política influenciam o comportamento eleitoral."
-destaque: false
+destaque: true
 ---
 1§ Nesta semana, pudemos observar um acontecimento curioso: Flávio Bolsonaro saiu na frente das eleições de 2026 no primeiro turno. Nas discussões acadêmicas e nas pesquisas eleitorais, como as da Datafolha e Quaest, a maioria das pesquisas apontavam que Lula iria sair na frente. Bom... por que isso não aconteceu? A taxa de abstenção aumentou (e muito), além do grande índice de votos brancos e nulos, mas o que exatamente isso quer dizer? Na minha perspectiva como *cientista social*, estamos vendo uma crise da hegemonia no que tange à democracia.
 

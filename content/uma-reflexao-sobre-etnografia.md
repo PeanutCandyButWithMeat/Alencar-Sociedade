@@ -7,7 +7,7 @@ data: 2026-09-28
 autor: "Adryan de Alencar"
 tempo_leitura: "4 min de leitura"
 resumo: "Uma reflexão acerca das diferentes propostas e conclusões que um etnógrado pode ter dependendo da sua relação com o grupo estudado."
-destaque: true
+destaque: false
 ---
 
 Hoje (28/09) estive em uma aula de Métodos de Pesquisa, durante a aula veio o seguinte tema à tona: se sou membro de uma comunidade, eu colho mais informações do que um etnógrafo não pertencente a ela? Automaticamente pensei “não necessariamente” e segui acompanhando o diálogo, dei o meu ponto com a frase “são propostas diferentes”. Desse modo, passei a pensar a etnografia como um encontro entre a realidade do observador e a realidade do observado.
