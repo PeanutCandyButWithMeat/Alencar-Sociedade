@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="{{ html_lang|default('pt-BR') }}">
 <head>
+<meta property="og:type" content="{{ 'article' if slug is defined else 'website' }}">
+<meta property="og:site_name" content="Alencar e Sociedade">
+<meta property="og:title" content="{{ title|e }}">
+<meta property="og:description" content="{{ (resumo or 'Ciências sociais, política e sociedade.')|e }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:image" content="{{ og_image }}">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{{ title }}</title>

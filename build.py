@@ -1,131 +1,122 @@
 import json
 import shutil
+import subprocess
+from datetime import datetime
 from pathlib import Path
 
 import frontmatter
 import markdown
 from jinja2 import Environment, FileSystemLoader
+from PIL import Image, ImageDraw, ImageFont
 
 RAIZ = Path(__file__).parent
-CONTEUDO_DIR = RAIZ / "content"
-TEMPLATES_DIR = RAIZ / "templates"
-STATIC_DIR = RAIZ / "static"
-SAIDA_DIR = RAIZ / "docs"
+SAIDA = RAIZ / "docs"
+SITE_URL = "https://peanutcandybutwithmeat.github.io/Alencar-Sociedade"
+FONTE_BOLD = RAIZ / "static/fonts/ZTNature-Black.ttf"
+FONTE_REG = RAIZ / "static/fonts/ZTNature-Medium.ttf"
+env = Environment(loader=FileSystemLoader(RAIZ / "templates"))
 
-env = Environment(loader=FileSystemLoader(TEMPLATES_DIR))
+
+def quebrar(draw, texto, fonte, largura):
+    linhas, atual = [], ""
+    for palavra in texto.split():
+        teste = f"{atual} {palavra}".strip()
+        if draw.textlength(teste, font=fonte) <= largura:
+            atual = teste
+        else:
+            linhas.append(atual)
+            atual = palavra
+    return linhas + [atual]
+
+
+def gerar_og(m):
+    W, H, M = 1200, 630, 80
+    img = Image.new("RGB", (W, H), "#111827")
+    d = ImageDraw.Draw(img)
+    tam = 64
+    while True:  # diminui a fonte até o título caber em 4 linhas
+        f_tit = ImageFont.truetype(str(FONTE_BOLD), tam)
+        linhas = quebrar(d, m["titulo"], f_tit, W - 2 * M)
+        if len(linhas) <= 4 or tam <= 32:
+            break
+        tam -= 4
+
+    d.rectangle([0, 0, 16, H], fill="#F59E0B")
+    d.text((M, M), m["categoria"].upper(), font=ImageFont.truetype(str(FONTE_REG), 30), fill="#F59E0B")
+    for i, linha in enumerate(linhas):
+        d.text((M, M + 80 + i * int(tam * 1.25)), linha, font=f_tit, fill="#F9FAFB")
+    d.text((M, H - M - 28), f"{m['autor']}  ·  Alencar e Sociedade",
+           font=ImageFont.truetype(str(FONTE_REG), 28), fill="#9CA3AF")
+
+    destino = SAIDA / "img" / "og"
+    destino.mkdir(parents=True, exist_ok=True)
+    img.save(destino / f"{m['slug']}.jpg", quality=88)
+    return f"img/og/{m['slug']}.jpg"
 
 
 def carregar_materias():
     materias = []
-    for caminho in sorted(CONTEUDO_DIR.glob("*.md")):
+    for caminho in (RAIZ / "content").glob("*.md"):
         post = frontmatter.load(caminho)
-        meta = post.metadata
-
-        obrigatorios = ["titulo", "categoria", "idioma"]
-        faltando = [campo for campo in obrigatorios if campo not in meta]
+        faltando = {"titulo", "categoria", "idioma"} - post.metadata.keys()
         if faltando:
-            raise ValueError(
-                f"{caminho.name}: faltam os campos {faltando} no cabeçalho da matéria."
-            )
-
-        corpo_html = markdown.markdown(post.content, extensions=["extra"])
-
+            raise ValueError(f"{caminho.name}: faltam os campos {sorted(faltando)}")
         materias.append({
-            "slug": meta.get("slug", caminho.stem),
-            "titulo": meta["titulo"],
-            "categoria": meta["categoria"],
-            "idioma": meta["idioma"],
-            "palavras_chave": meta.get("palavras_chave", []),
-            "data": str(meta.get("data", "")),
-            "resumo": meta.get("resumo", ""),
-            "autor": meta.get("autor", "Adryan de Alencar"),
-            "tempo_leitura": meta.get("tempo_leitura", ""),
-            "destaque": bool(meta.get("destaque", False)),
-            "conteudo_html": corpo_html,
+            "slug": caminho.stem,
+            "palavras_chave": [],
+            "resumo": "",
+            "autor": "Adryan de Alencar",
+            "tempo_leitura": "",
+            **post.metadata,
+            "data": str(post.metadata.get("data", "")),
+            "destaque": bool(post.metadata.get("destaque")),
+            "conteudo_html": markdown.markdown(post.content, extensions=["extra"]),
         })
-    return materias
+    return sorted(materias, key=lambda m: m["data"], reverse=True)
+
+
+def render(modelo, destino, **ctx):
+    destino.write_text(env.get_template(modelo).render(**ctx), encoding="utf-8")
 
 
 def montar():
-    if SAIDA_DIR.exists():
-        shutil.rmtree(SAIDA_DIR)
-    SAIDA_DIR.mkdir()
-
-    for pasta in ["css", "fonts", "img", "js"]:
-        origem = STATIC_DIR / pasta
-        if origem.exists():
-            shutil.copytree(origem, SAIDA_DIR / pasta)
+    shutil.rmtree(SAIDA, ignore_errors=True)
+    shutil.copytree(RAIZ / "static", SAIDA)
+    (SAIDA / "noticias").mkdir(exist_ok=True)
 
     materias = carregar_materias()
-    materias.sort(key=lambda m: m["data"], reverse=True)
+    destaque = next((m for m in materias if m["destaque"]), materias[0] if materias else None)
+    og_home = f"{SITE_URL}/img/og/home.jpg"  # você cria à mão em static/img/og/home.jpg
 
-    destaques = [m for m in materias if m["destaque"]]
-    destaque = destaques[0] if destaques else (materias[0] if materias else None)
-    lista = [m for m in materias if m is not destaque]
+    render("index.html", SAIDA / "index.html", title="Alencar e Sociedade", base_path="",
+           destaque=destaque, materias=[m for m in materias if m is not destaque],
+           og_image=og_home, og_url=f"{SITE_URL}/")
+    render("sobre.html", SAIDA / "sobre.html", title="Sobre — Alencar e Sociedade", base_path="",
+           og_image=og_home, og_url=f"{SITE_URL}/sobre.html")
 
-    # Página inicial
-    tpl_index = env.get_template("index.html")
-    (SAIDA_DIR / "index.html").write_text(
-        tpl_index.render(
-            title="Alencar e Sociedade",
-            base_path="",
-            destaque=destaque,
-            materias=lista,
-        ),
-        encoding="utf-8",
-    )
-
-    # Sobre
-    tpl_sobre = env.get_template("sobre.html")
-    (SAIDA_DIR / "sobre.html").write_text(
-        tpl_sobre.render(title="Sobre — Alencar e Sociedade", base_path=""),
-        encoding="utf-8",
-    )
-
-    # Matérias individuais
-    pasta_noticias = SAIDA_DIR / "noticias"
-    pasta_noticias.mkdir()
-    tpl_materia = env.get_template("article.html")
     for m in materias:
-        idioma_html = "en" if m["idioma"].upper() == "EN" else "pt-BR"
-        html = tpl_materia.render(
-            title=f"{m['titulo']} — Alencar e Sociedade",
-            base_path="../",
-            html_lang=idioma_html,
-            **m,
-        )
-        (pasta_noticias / f"{m['slug']}.html").write_text(html, encoding="utf-8")
+        imagem = m.get("imagem") or gerar_og(m)
+        render("article.html", SAIDA / "noticias" / f"{m['slug']}.html",
+               **m, title=f"{m['titulo']} — Alencar e Sociedade", base_path="../",
+               html_lang="en" if m["idioma"].upper() == "EN" else "pt-BR",
+               og_image=f"{SITE_URL}/{imagem}",
+               og_url=f"{SITE_URL}/noticias/{m['slug']}.html")
 
-    # Índice de busca
-    indice = [
-        {
-            "titulo": m["titulo"],
-            "categoria": m["categoria"],
-            "idioma": m["idioma"],
-            "palavras_chave": m["palavras_chave"],
-            "resumo": m["resumo"],
-            "url": f"noticias/{m['slug']}.html",
-        }
-        for m in materias
-    ]
-    (SAIDA_DIR / "search-index.json").write_text(
-        json.dumps(indice, ensure_ascii=False, indent=2), encoding="utf-8"
-    )
+    campos = ("titulo", "categoria", "idioma", "palavras_chave", "resumo")
+    indice = [{**{c: m[c] for c in campos}, "url": f"noticias/{m['slug']}.html"} for m in materias]
+    (SAIDA / "search-index.json").write_text(
+        json.dumps(indice, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    print(f"Build concluído: {len(materias)} matéria(s) gerada(s) em {SAIDA_DIR}/")
+    print(f"Build concluído: {len(materias)} matéria(s) em {SAIDA}/")
 
-
-import subprocess
-from datetime import datetime
 
 def publicar():
-    msg = f"Publicação {datetime.now():%Y-%m-%d %H:%M}"
-
     subprocess.run(["git", "add", "."], check=True)
-    subprocess.run(["git", "commit", "-m", msg], check=True)
-    subprocess.run(["git", "push"], check=True)
+    # commit falha (código 1) quando não há mudanças; nesse caso não faz push
+    if subprocess.run(["git", "commit", "-m", f"Publicação {datetime.now():%Y-%m-%d %H:%M}"]).returncode == 0:
+        subprocess.run(["git", "push"], check=True)
+
 
 if __name__ == "__main__":
     montar()
     publicar()
-
