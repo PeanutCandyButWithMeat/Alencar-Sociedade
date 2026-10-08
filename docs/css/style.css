@@ -1,21 +1,8 @@
-/* ==========================================================
-   Fontes
-   Coloque os arquivos de fonte reais em /fonts/.
-   Os nomes de arquivo abaixo são exemplos — ajuste para
-   bater com os arquivos que você tem.
-   ========================================================== */
-
 @font-face {
   font-family: 'Kanopi';
   src: url('../fonts/KanopiBrazil-Regular.woff2') format('woff2');
   font-weight: 400;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Nature';
-  src: url('../fonts/ZTNature-Black.woff2') format('woff2');
-  font-weight: 500;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -27,9 +14,13 @@
   font-display: swap;
 }
 
-/* Inter vem do Google Fonts via <link> no HTML.
-   Se preferir hospedar localmente, baixe os arquivos,
-   coloque em /fonts/ e troque por um @font-face aqui. */
+@font-face {
+  font-family: 'Nature';
+  src: url('../fonts/ZTNature-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
 
 :root {
   --petrol:   #4A7C82;
