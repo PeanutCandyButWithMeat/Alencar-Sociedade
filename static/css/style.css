@@ -8,16 +8,16 @@
 
 @font-face {
   font-family: 'Nature';
-  src: url('../fonts/ZTNature-Medium.woff2') format('woff2');
-  font-weight: 500;
+  src: url('../fonts/ZTNature-Black.woff2') format('woff2');
+  font-weight: 600;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Nature';
-  src: url('../fonts/ZTNature-Black.woff2') format('woff2');
-  font-weight: 900;
+  src: url('../fonts/ZTNature-Medium.woff2') format('woff2');
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
