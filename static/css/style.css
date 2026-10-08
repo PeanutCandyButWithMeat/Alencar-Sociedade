@@ -21,8 +21,9 @@
 
 @font-face {
   font-family: 'Nature';
-  src: url('../fonts/ZTNature-Medium.woff2 format') format('woff2');
-  font-weight: 1000;
+  src: url('../fonts/ZTNature-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
   font-display: swap;
 }
 
