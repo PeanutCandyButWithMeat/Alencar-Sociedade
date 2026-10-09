@@ -19,7 +19,7 @@ env = Environment(loader=FileSystemLoader(RAIZ / "templates"))
 
 LINKS = [
     {"titulo": "Últimas matérias", "url": "index.html", "desc": "Alencar e Sociedade"},
-    {"titulo": "LinkedIn", "url": "linkedin.com/in/adryan-de-alencar-61b386309", "desc": "Perfil profissional"},
+    {"titulo": "LinkedIn", "url": "https://www.linkedin.com/in/adryan-de-alencar-61b386309", "desc": "Perfil profissional"},
     {"titulo": "Lattes", "url": "http://lattes.cnpq.br/3380250362638685", "desc": "Currículo Lattes"},
 ]
 
