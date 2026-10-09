@@ -1,6 +1,7 @@
 import json
 import shutil
 import subprocess
+import argparse
 from datetime import datetime
 from pathlib import Path
 
@@ -16,6 +17,11 @@ FONTE_BOLD = RAIZ / "static/fonts/ZTNature-Black.ttf"
 FONTE_REG = RAIZ / "static/fonts/ZTNature-Medium.ttf"
 env = Environment(loader=FileSystemLoader(RAIZ / "templates"))
 
+LINKS = [
+    {"titulo": "Últimas matérias", "url": "index.html", "desc": "Alencar e Sociedade"},
+    {"titulo": "LinkedIn", "url": "linkedin.com/in/adryan-de-alencar-61b386309", "desc": "Perfil profissional"},
+    {"titulo": "Lattes", "url": "http://lattes.cnpq.br/3380250362638685", "desc": "Currículo Lattes"},
+]
 
 def quebrar(draw, texto, fonte, largura):
     linhas, atual = [], ""
@@ -86,13 +92,18 @@ def montar():
 
     materias = carregar_materias()
     destaque = next((m for m in materias if m["destaque"]), materias[0] if materias else None)
-    og_home = f"{SITE_URL}/img/og/home.jpg"  # você cria à mão em static/img/og/home.jpg
+    og_home = f"{SITE_URL}/img/og/home.jpg"  # criar à mão em static/img/og/home.jpg
 
     render("index.html", SAIDA / "index.html", title="Alencar e Sociedade", base_path="",
            destaque=destaque, materias=[m for m in materias if m is not destaque],
            og_image=og_home, og_url=f"{SITE_URL}/")
+
     render("sobre.html", SAIDA / "sobre.html", title="Sobre — Alencar e Sociedade", base_path="",
            og_image=og_home, og_url=f"{SITE_URL}/sobre.html")
+
+    render("links.html", SAIDA / "links.html", title="Links — Alencar e Sociedade",
+           base_path="", links=LINKS,
+           og_image=og_home, og_url=f"{SITE_URL}/links.html")
 
     for m in materias:
         imagem = m.get("imagem") or gerar_og(m)
@@ -118,5 +129,11 @@ def publicar():
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--publicar", action="store_true",
+                        help="depois do build, faz commit e push")
+    args = parser.parse_args()
+
     montar()
-    publicar()
+    if args.publicar:
+        publicar()

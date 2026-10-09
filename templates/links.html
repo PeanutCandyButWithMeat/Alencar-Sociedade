@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="wrap links-page">
+  <h1 class="links-page__title">Adryan de Alencar</h1>
+  <p class="links-page__sub">
+  <span>Ciências Sociais, UFRJ</span>
+  <span class="links-page__role">fundador do Alencar e Sociedade</span>
+</p>
+
+  {% for l in links %}
+  <a class="botao" href="{{ l.url }}">
+    <strong>{{ l.titulo }}</strong>
+    {% if l.desc %}<span>{{ l.desc }}</span>{% endif %}
+  </a>
+  {% endfor %}
+</main>
+{% endblock %}
