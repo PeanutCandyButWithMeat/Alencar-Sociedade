@@ -179,7 +179,7 @@ body {
 
 .card__title {
   font-family: var(--font-heading);
-  font-weight: 900;
+  font-weight: 500;
   font-synthesis: none;
   font-size: 1.45rem;
   line-height: 1.3;
