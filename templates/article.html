@@ -90,22 +90,51 @@
     })();
     </script>
     {% endif %}
-    <script>
+
+<script>
 (async () => {
   try {
-    const r = await fetch(
-      "https://alencar.goatcounter.com/counter/" +
-      encodeURIComponent(location.pathname) + ".json"
+    // Espera o count.js carregar e disponibilizar os dados.
+    for (let i = 0; i < 50; i++) {
+      if (window.goatcounter?.get_data) break;
+      await new Promise(resolve => setTimeout(resolve, 100));
+    }
+
+    const path = window.goatcounter?.get_data?.()?.p
+      || location.pathname;
+
+    const url = "https://alencar.goatcounter.com/counter/"
+      + encodeURIComponent(path) + ".json";
+
+    const response = await fetch(url);
+
+    if (!response.ok) {
+      console.warn("GoatCounter:", response.status, url);
+      return;
+    }
+
+    const data = await response.json();
+    const count = parseInt(
+      String(data.count).replace(/\D/g, ""), 10
     );
-    if (!r.ok) return;
-    const n = parseInt((await r.json()).count.replace(/\D/g, ""), 10);
-    if (!n) return;
-    const fmt = new Intl.NumberFormat("pt-BR", { notation: "compact", maximumFractionDigits: 1 });
-    document.getElementById("views-num").textContent = fmt.format(n);
+
+    if (!Number.isFinite(count)) return;
+
+    const fmt = new Intl.NumberFormat("pt-BR", {
+      notation: "compact",
+      maximumFractionDigits: 1
+    });
+
+    document.getElementById("views-num").textContent =
+      fmt.format(count);
+
     document.getElementById("views").hidden = false;
-  } catch (e) {}
+  } catch (error) {
+    console.error("Erro ao consultar GoatCounter:", error);
+  }
 })();
-    </script>
+</script>
+
   </article>
   <p class="article__back"><a href="{{ base_path }}index.html">&larr; Voltar para a página inicial</a></p>
 </main>
