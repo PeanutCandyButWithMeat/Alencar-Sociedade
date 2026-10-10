@@ -46,7 +46,13 @@
       <span class="tag tag--lang">PT</span>
     </p>
     <h1 class="article__title">Uma reflexão sobre etnografia</h1>
-    <p class="article__byline">Por Adryan de Alencar · 4 min de leitura</p>
+    <p class="article__byline">
+  Por Adryan de Alencar · 4 min de leitura
+  <span class="views" id="views" hidden>
+    · <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+    <span id="views-num"></span>
+  </span>
+</p>
     <div class="article__body">
       <p>Hoje (28/09) estive em uma aula de Métodos de Pesquisa, durante a aula veio o seguinte tema à tona: se sou membro de uma comunidade, eu colho mais informações do que um etnógrafo não pertencente a ela? Automaticamente pensei “não necessariamente” e segui acompanhando o diálogo, dei o meu ponto com a frase “são propostas diferentes”. Desse modo, passei a pensar a etnografia como um encontro entre a realidade do observador e a realidade do observado.</p>
 <p>Tal concepção é baseada no que já li de Peter Berger e Luckmann, partindo da ideia de que cada um possui a sua realidade e bom, transmitimos elas e absorvemos a realidade alheia. Enfim, a  etnografia deve considerar ambas as realidades. Isto é, nós como cientistas sociais estamos constantemente em debates éticos de pesquisa e do quão confiável é o nosso trabalho, entretanto, as respostas do Outro tanto frente ao <em>semelhante</em> quanto ao <em>diferente</em> são importantes para a compreensão de um grupo.</p>
@@ -125,6 +131,20 @@
     })();
     </script>
     
+    <script>
+    (async () => {
+      try {
+        const r = await fetch(
+          "https://alencar.goatcounter.com/counter/" +
+          encodeURIComponent(location.pathname) + ".json"
+        );
+        const n = r.ok ? parseInt((await r.json()).count.replace(/\D/g, ""), 10) : 0;
+        const fmt = new Intl.NumberFormat("pt-BR", { notation: "compact", maximumFractionDigits: 1 });
+        document.getElementById("views-num").textContent = fmt.format(n || 0);
+        document.getElementById("views").hidden = false;
+      } catch (e) {}
+    })();
+    </script>
   </article>
   <p class="article__back"><a href="../index.html">&larr; Voltar para a página inicial</a></p>
 </main>
@@ -144,6 +164,9 @@
 </footer>
 
 
+
+<script data-goatcounter="https://alencar.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>

@@ -8,7 +8,13 @@
       <span class="tag tag--lang">{{ idioma }}</span>
     </p>
     <h1 class="article__title">{{ titulo }}</h1>
-    <p class="article__byline">Por {{ autor }} · {{ tempo_leitura }}</p>
+    <p class="article__byline">
+  Por {{ autor }} · {{ tempo_leitura }}
+  <span class="views" id="views" hidden>
+    · <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+    <span id="views-num"></span>
+  </span>
+</p>
     <div class="article__body">
       {{ conteudo_html|safe }}
     </div>
@@ -84,6 +90,20 @@
     })();
     </script>
     {% endif %}
+    <script>
+    (async () => {
+      try {
+        const r = await fetch(
+          "https://alencar.goatcounter.com/counter/" +
+          encodeURIComponent(location.pathname) + ".json"
+        );
+        const n = r.ok ? parseInt((await r.json()).count.replace(/\D/g, ""), 10) : 0;
+        const fmt = new Intl.NumberFormat({{ ("en" if en else "pt-BR")|tojson }}, { notation: "compact", maximumFractionDigits: 1 });
+        document.getElementById("views-num").textContent = fmt.format(n || 0);
+        document.getElementById("views").hidden = false;
+      } catch (e) {}
+    })();
+    </script>
   </article>
   <p class="article__back"><a href="{{ base_path }}index.html">&larr; Voltar para a página inicial</a></p>
 </main>

@@ -470,3 +470,6 @@ button:focus-visible {
 }
 
 .comentario__meta a:hover { text-decoration: underline; }
+
+.views { display: inline-flex; align-items: center; gap: .25em; }
+.views svg { vertical-align: -2px; }

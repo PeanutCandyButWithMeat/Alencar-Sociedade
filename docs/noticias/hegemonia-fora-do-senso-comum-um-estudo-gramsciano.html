@@ -46,7 +46,13 @@
       <span class="tag tag--lang">PT</span>
     </p>
     <h1 class="article__title">Hegemonia fora do senso comum, um estudo gramsciano</h1>
-    <p class="article__byline">Por Adryan de Alencar · 6 min de leitura</p>
+    <p class="article__byline">
+  Por Adryan de Alencar · 6 min de leitura
+  <span class="views" id="views" hidden>
+    · <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+    <span id="views-num"></span>
+  </span>
+</p>
     <div class="article__body">
       <p>Antonio Gramsci, um dos mais influentes teóricos do século XX, reelaborou diversos conceitos que ainda hoje ocupam lugar central nas Ciências Sociais. Muitas vezes, entretanto, essas contribuições são utilizadas sem que sua origem gramsciana seja explicitamente reconhecida. A hegemonia é um dos exemplos mais importantes. Embora o termo tenha origem no grego antigo e originalmente significasse algo próximo de liderança, comando ou predominância, Gramsci lhe atribuiu um significado muito mais complexo. Para ele, a hegemonia diz respeito ao processo pelo qual um grupo social se torna dirigente, conquistando outros grupos por meio da construção de consensos e da difusão de uma determinada visão de mundo.</p>
 <p>Nessa perspectiva, a estabilidade de uma sociedade não depende apenas da força do Estado, mas também da capacidade de seus dirigentes de apresentar seus interesses particulares como interesses gerais. Instituições como a escola, a imprensa, a religião e outras organizações da sociedade civil desempenham papel fundamental nesse processo, contribuindo para a formação de valores, crenças e práticas compartilhadas. A hegemonia, portanto, não deve ser entendida simplesmente como imposição de poder, mas como uma forma de direção intelectual e moral baseada em certo grau de consentimento dos grupos dirigidos.</p>
@@ -125,6 +131,20 @@
     })();
     </script>
     
+    <script>
+    (async () => {
+      try {
+        const r = await fetch(
+          "https://alencar.goatcounter.com/counter/" +
+          encodeURIComponent(location.pathname) + ".json"
+        );
+        const n = r.ok ? parseInt((await r.json()).count.replace(/\D/g, ""), 10) : 0;
+        const fmt = new Intl.NumberFormat("pt-BR", { notation: "compact", maximumFractionDigits: 1 });
+        document.getElementById("views-num").textContent = fmt.format(n || 0);
+        document.getElementById("views").hidden = false;
+      } catch (e) {}
+    })();
+    </script>
   </article>
   <p class="article__back"><a href="../index.html">&larr; Voltar para a página inicial</a></p>
 </main>
@@ -144,6 +164,9 @@
 </footer>
 
 
+
+<script data-goatcounter="https://alencar.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>

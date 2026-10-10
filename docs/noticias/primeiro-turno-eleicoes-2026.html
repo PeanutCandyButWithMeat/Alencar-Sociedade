@@ -46,7 +46,13 @@
       <span class="tag tag--lang">PT</span>
     </p>
     <h1 class="article__title">Primeiro turno das eleições de 2026, o que isso reflete sobre a democracia no Brasil?</h1>
-    <p class="article__byline">Por Adryan de Alencar · 7 min de leitura</p>
+    <p class="article__byline">
+  Por Adryan de Alencar · 7 min de leitura
+  <span class="views" id="views" hidden>
+    · <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+    <span id="views-num"></span>
+  </span>
+</p>
     <div class="article__body">
       <p>1§ Nesta semana, pudemos observar um acontecimento curioso: Flávio Bolsonaro saiu na frente das eleições de 2026 no primeiro turno. Nas discussões acadêmicas e nas pesquisas eleitorais, como as da Datafolha e Quaest, a maioria das pesquisas apontavam que Lula iria sair na frente. Bom... por que isso não aconteceu? A taxa de abstenção aumentou (e muito), além do grande índice de votos brancos e nulos, mas o que exatamente isso quer dizer? Na minha perspectiva como <em>cientista social</em>, estamos vendo uma crise da hegemonia no que tange à democracia.</p>
 <p>2§ <em>Democracia representativa e a sua crise.</em> Em 2018, o G1 publicou uma matéria na qual o Instituto Locomotiva/Ideia Big Data apontou que 96% dos brasileiros não se sentem representados pelos políticos em exercício no país. Ademais, uma pesquisa nacional do Laboratório de Inteligência sobre Narrativas e Algoritmos, do Instituto Oyá, revelou agora — em 2026 — que 65% dos brasileiros não <em>confiam</em> nos políticos. Karina Camilo analisa os dados com o seguinte diagnóstico: "Os dados provam que o brasileiro não está apático, mas sobrecarregado por modelos de representação que não resolvem as urgências da sua rotina". Por outro lado, a minha conclusão vai muito além das meras urgências da rotina e parte de duas causas: egoísmo e alienação.</p>
@@ -128,6 +134,20 @@
     })();
     </script>
     
+    <script>
+    (async () => {
+      try {
+        const r = await fetch(
+          "https://alencar.goatcounter.com/counter/" +
+          encodeURIComponent(location.pathname) + ".json"
+        );
+        const n = r.ok ? parseInt((await r.json()).count.replace(/\D/g, ""), 10) : 0;
+        const fmt = new Intl.NumberFormat("pt-BR", { notation: "compact", maximumFractionDigits: 1 });
+        document.getElementById("views-num").textContent = fmt.format(n || 0);
+        document.getElementById("views").hidden = false;
+      } catch (e) {}
+    })();
+    </script>
   </article>
   <p class="article__back"><a href="../index.html">&larr; Voltar para a página inicial</a></p>
 </main>
@@ -147,6 +167,9 @@
 </footer>
 
 
+
+<script data-goatcounter="https://alencar.goatcounter.com/count"
+        async src="//gc.zgo.at/count.js"></script>
 
 </body>
 </html>
