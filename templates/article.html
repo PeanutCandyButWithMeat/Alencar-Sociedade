@@ -91,18 +91,20 @@
     </script>
     {% endif %}
     <script>
-    (async () => {
-      try {
-        const r = await fetch(
-          "https://alencar.goatcounter.com/counter/" +
-          encodeURIComponent(location.pathname) + ".json"
-        );
-        const n = r.ok ? parseInt((await r.json()).count.replace(/\D/g, ""), 10) : 0;
-        const fmt = new Intl.NumberFormat({{ ("en" if en else "pt-BR")|tojson }}, { notation: "compact", maximumFractionDigits: 1 });
-        document.getElementById("views-num").textContent = fmt.format(n || 0);
-        document.getElementById("views").hidden = false;
-      } catch (e) {}
-    })();
+(async () => {
+  try {
+    const r = await fetch(
+      "https://alencar.goatcounter.com/counter/" +
+      encodeURIComponent(location.pathname) + ".json"
+    );
+    if (!r.ok) return;
+    const n = parseInt((await r.json()).count.replace(/\D/g, ""), 10);
+    if (!n) return;
+    const fmt = new Intl.NumberFormat("pt-BR", { notation: "compact", maximumFractionDigits: 1 });
+    document.getElementById("views-num").textContent = fmt.format(n);
+    document.getElementById("views").hidden = false;
+  } catch (e) {}
+})();
     </script>
   </article>
   <p class="article__back"><a href="{{ base_path }}index.html">&larr; Voltar para a página inicial</a></p>

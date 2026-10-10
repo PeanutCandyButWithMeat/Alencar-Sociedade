@@ -6,7 +6,7 @@ palavras_chave: ["etnografia", "métodos", "antropologia", "ciências sociais", 
 data: 2026-09-28
 autor: "Adryan de Alencar"
 tempo_leitura: "4 min de leitura"
-resumo: "Uma reflexão acerca das diferentes propostas e conclusões que um etnógrado pode ter dependendo da sua relação com o grupo estudado."
+resumo: "Uma reflexão acerca das diferentes propostas e conclusões que um etnógrafo pode ter dependendo da sua relação com o grupo estudado."
 destaque: false
 ---
 

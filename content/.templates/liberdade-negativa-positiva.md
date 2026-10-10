@@ -13,4 +13,4 @@ destaque: false
 Duas formas de pensar liberdade explicam boa parte do desacordo em debates públicos
 que parecem, à primeira vista, ser sobre outra coisa.
 
-Substitua este parágrafo pelo texto real da matéria.
+Aqui que tu escreve o que quiser
