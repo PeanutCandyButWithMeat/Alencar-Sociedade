@@ -10,6 +10,8 @@ import markdown
 from jinja2 import Environment, FileSystemLoader
 from PIL import Image, ImageDraw, ImageFont
 
+from bluesky import garantir_post, web_url
+
 RAIZ = Path(__file__).parent
 SAIDA = RAIZ / "docs"
 SITE_URL = "https://peanutcandybutwithmeat.github.io/Alencar-Sociedade"
@@ -22,6 +24,7 @@ LINKS = [
     {"titulo": "LinkedIn", "url": "https://www.linkedin.com/in/adryan-de-alencar-61b386309", "desc": "Perfil profissional"},
     {"titulo": "Lattes", "url": "http://lattes.cnpq.br/3380250362638685", "desc": "Currículo Lattes"},
 ]
+
 
 def quebrar(draw, texto, fonte, largura):
     linhas, atual = [], ""
@@ -107,6 +110,18 @@ def montar():
 
     for m in materias:
         imagem = m.get("imagem") or gerar_og(m)
+
+        # Bluesky: posta (se ainda não postou) usando a imagem da matéria como capa
+        uri = garantir_post(
+            slug=m["slug"],
+            titulo=m["titulo"],
+            descricao=m["resumo"],
+            url=f"{SITE_URL}/noticias/{m['slug']}.html",
+            capa_path=SAIDA / imagem,
+        )
+        m["bluesky_uri"] = uri
+        m["bluesky_web"] = web_url(uri) if uri else None
+
         render("article.html", SAIDA / "noticias" / f"{m['slug']}.html",
                **m, title=f"{m['titulo']} — Alencar e Sociedade", base_path="../",
                html_lang="en" if m["idioma"].upper() == "EN" else "pt-BR",

@@ -38,6 +38,7 @@
 </div>
 
 
+
 <main class="wrap wrap--article">
   <article class="article">
     <p class="article__meta">
@@ -52,6 +53,78 @@
 <p>Em Gramsci, a relação entre dirigentes e dirigidos articula duas dimensões complementares: hegemonia e dominação. A primeira refere-se à obtenção do consenso; a segunda, ao exercício da coerção. Nenhuma ordem social se sustenta exclusivamente por uma delas. Mesmo os grupos dirigentes mais bem-sucedidos recorrem, em alguma medida, à força, enquanto os mecanismos coercitivos tendem a ser mais eficazes quando apoiados por algum grau de legitimidade social.</p>
 <p>Quando os grupos dirigidos deixam de reconhecer os dirigentes como representantes de seus interesses, emerge aquilo que Gramsci denomina crise orgânica ou crise de hegemonia. Nesses momentos, o consenso que sustentava a ordem social enfraquece, abrindo espaço para conflitos políticos mais intensos e para um maior recurso a mecanismos de coerção. Todavia, a crise não representa necessariamente o colapso imediato da sociedade, mas um período de disputa no qual diferentes forças sociais procuram construir uma nova direção política e cultural. O desfecho desse processo pode resultar na formação de uma nova hegemonia, capaz de reorganizar o bloco histórico e restabelecer a estabilidade sob novos fundamentos.</p>
     </div>
+
+    
+    <section class="conversa" id="conversa">
+      <h2 class="conversa__titulo">Conversa no Bluesky</h2>
+      <p class="conversa__acao">
+        <a href="https://bsky.app/profile/did:plc:z4uz2pv7rbxznh2m6pdg6uiw/post/3mxiel3g3tt23" target="_blank" rel="noopener">
+          Responder no Bluesky →
+        </a>
+      </p>
+      <div class="conversa__lista" id="thread">Carregando respostas…</div>
+    </section>
+
+    <script>
+    (async () => {
+      const uri = "at://did:plc:z4uz2pv7rbxznh2m6pdg6uiw/app.bsky.feed.post/3mxiel3g3tt23";
+      const EN = false;
+      const T = EN
+        ? { vazio: "No replies yet. Be the first!", erro: "Could not load the conversation right now.", ver: "view on Bluesky" }
+        : { vazio: "Ainda sem respostas. Seja o primeiro!", erro: "Não foi possível carregar a conversa agora.", ver: "ver no Bluesky" };
+      const box = document.getElementById("thread");
+      const ehResposta = (n) => n && n.$type === "app.bsky.feed.defs#threadViewPost";
+
+      function render(no) {
+        const p = no.post;
+        const el = document.createElement("div");
+        el.className = "comentario";
+
+        const autor = document.createElement("span");
+        autor.className = "comentario__autor";
+        autor.textContent = p.author.displayName || p.author.handle;
+
+        const handle = document.createElement("span");
+        handle.className = "comentario__handle";
+        handle.textContent = "@" + p.author.handle;
+
+        const texto = document.createElement("p");
+        texto.className = "comentario__texto";
+        texto.textContent = p.record.text;   // textContent: nunca innerHTML (texto de terceiros)
+
+        const meta = document.createElement("div");
+        meta.className = "comentario__meta";
+        const link = document.createElement("a");
+        link.href = "https://bsky.app/profile/" + p.author.did + "/post/" + p.uri.split("/").pop();
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = T.ver;
+        meta.append("♥ " + (p.likeCount || 0) + " · ", link);
+
+        el.append(autor, handle, texto, meta);
+        (no.replies || []).filter(ehResposta)
+          .sort((a, b) => (b.post.likeCount || 0) - (a.post.likeCount || 0))
+          .forEach((r) => el.appendChild(render(r)));
+        return el;
+      }
+
+      try {
+        const r = await fetch(
+          "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=6&uri=" +
+          encodeURIComponent(uri)
+        );
+        if (!r.ok) throw new Error(r.status);
+        const { thread } = await r.json();
+        const respostas = (thread.replies || []).filter(ehResposta)
+          .sort((a, b) => (b.post.likeCount || 0) - (a.post.likeCount || 0));
+        box.textContent = respostas.length ? "" : T.vazio;
+        respostas.forEach((x) => box.appendChild(render(x)));
+      } catch (e) {
+        box.textContent = T.erro;
+      }
+    })();
+    </script>
+    
   </article>
   <p class="article__back"><a href="../index.html">&larr; Voltar para a página inicial</a></p>
 </main>

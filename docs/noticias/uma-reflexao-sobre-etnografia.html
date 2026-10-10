@@ -38,6 +38,7 @@
 </div>
 
 
+
 <main class="wrap wrap--article">
   <article class="article">
     <p class="article__meta">
@@ -52,6 +53,78 @@
 <p>Portanto, onde quero chegar é que existem múltiplas dimensões que podemos e devemos investigar no nosso trabalho e que não existe uma hierarquia de qual dinâmica entre realidades é mais <em>merecedora</em> de uma elaboração teórica.  Bom, com outras palavras, nós não somos imparciais e isso é okay, como disse meu professor: não seria fácil investigar o medo que uma comunidade sente em relação às instituições públicas por um etnógrafo membro daquela comunidade (parafraseando — afinal, minha memória não é a das melhores).</p>
 <p>Antes de finalizar, vale ressaltar que não estou fazendo uma definição rigorosa ou buscando <em>reinventar a roda</em>, trata-se somente de um ensaio a partir de uma reflexão que me surgiu durante a aula. Obrigado pela leitura.</p>
     </div>
+
+    
+    <section class="conversa" id="conversa">
+      <h2 class="conversa__titulo">Conversa no Bluesky</h2>
+      <p class="conversa__acao">
+        <a href="https://bsky.app/profile/did:plc:z4uz2pv7rbxznh2m6pdg6uiw/post/3mxiekkpgdq2i" target="_blank" rel="noopener">
+          Responder no Bluesky →
+        </a>
+      </p>
+      <div class="conversa__lista" id="thread">Carregando respostas…</div>
+    </section>
+
+    <script>
+    (async () => {
+      const uri = "at://did:plc:z4uz2pv7rbxznh2m6pdg6uiw/app.bsky.feed.post/3mxiekkpgdq2i";
+      const EN = false;
+      const T = EN
+        ? { vazio: "No replies yet. Be the first!", erro: "Could not load the conversation right now.", ver: "view on Bluesky" }
+        : { vazio: "Ainda sem respostas. Seja o primeiro!", erro: "Não foi possível carregar a conversa agora.", ver: "ver no Bluesky" };
+      const box = document.getElementById("thread");
+      const ehResposta = (n) => n && n.$type === "app.bsky.feed.defs#threadViewPost";
+
+      function render(no) {
+        const p = no.post;
+        const el = document.createElement("div");
+        el.className = "comentario";
+
+        const autor = document.createElement("span");
+        autor.className = "comentario__autor";
+        autor.textContent = p.author.displayName || p.author.handle;
+
+        const handle = document.createElement("span");
+        handle.className = "comentario__handle";
+        handle.textContent = "@" + p.author.handle;
+
+        const texto = document.createElement("p");
+        texto.className = "comentario__texto";
+        texto.textContent = p.record.text;   // textContent: nunca innerHTML (texto de terceiros)
+
+        const meta = document.createElement("div");
+        meta.className = "comentario__meta";
+        const link = document.createElement("a");
+        link.href = "https://bsky.app/profile/" + p.author.did + "/post/" + p.uri.split("/").pop();
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.textContent = T.ver;
+        meta.append("♥ " + (p.likeCount || 0) + " · ", link);
+
+        el.append(autor, handle, texto, meta);
+        (no.replies || []).filter(ehResposta)
+          .sort((a, b) => (b.post.likeCount || 0) - (a.post.likeCount || 0))
+          .forEach((r) => el.appendChild(render(r)));
+        return el;
+      }
+
+      try {
+        const r = await fetch(
+          "https://public.api.bsky.app/xrpc/app.bsky.feed.getPostThread?depth=6&uri=" +
+          encodeURIComponent(uri)
+        );
+        if (!r.ok) throw new Error(r.status);
+        const { thread } = await r.json();
+        const respostas = (thread.replies || []).filter(ehResposta)
+          .sort((a, b) => (b.post.likeCount || 0) - (a.post.likeCount || 0));
+        box.textContent = respostas.length ? "" : T.vazio;
+        respostas.forEach((x) => box.appendChild(render(x)));
+      } catch (e) {
+        box.textContent = T.erro;
+      }
+    })();
+    </script>
+    
   </article>
   <p class="article__back"><a href="../index.html">&larr; Voltar para a página inicial</a></p>
 </main>

@@ -396,3 +396,77 @@ button:focus-visible {
   font-size: 0.85rem;
   opacity: 0.85;
 }
+
+/* ---------- Conversa no Bluesky ---------- */
+
+.conversa {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(42, 24, 16, 0.15);
+}
+
+.conversa__titulo {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-synthesis: none;
+  font-size: 1.3rem;
+  color: var(--ink);
+  margin: 0 0 10px;
+}
+
+.conversa__acao {
+  margin: 0 0 24px;
+}
+
+.conversa__acao a {
+  color: var(--petrol);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.conversa__acao a:hover { text-decoration: underline; }
+
+/* texto de "Carregando…", "Sem respostas" e de erro */
+.conversa__lista {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+.comentario {
+  margin: 0 0 20px;
+  padding-left: 14px;
+  border-left: 3px solid var(--amber);
+  color: var(--ink);
+}
+
+/* respostas às respostas */
+.comentario .comentario {
+  margin: 16px 0 0 12px;
+  border-left-color: var(--petrol);
+}
+
+.comentario__autor { font-weight: 600; }
+
+.comentario__handle {
+  margin-left: 6px;
+  font-size: 0.9rem;
+  color: var(--ink-soft);
+}
+
+.comentario__texto {
+  margin: 4px 0;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.comentario__meta {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.comentario__meta a {
+  color: var(--petrol);
+  text-decoration: none;
+}
+
+.comentario__meta a:hover { text-decoration: underline; }
