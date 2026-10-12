@@ -12,6 +12,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 from bluesky import garantir_post, web_url
 
+import xml.etree.ElementTree as ET
+from urllib.parse import quote
+
 RAIZ = Path(__file__).parent
 SAIDA = RAIZ / "docs"
 SITE_URL = "https://peanutcandybutwithmeat.github.io/Alencar-Sociedade"
@@ -89,51 +92,23 @@ def render(modelo, destino, **ctx):
 
 
 def gerar_sitemap(materias):
-    """Gera sitemap.xml com todas as páginas públicas do site."""
-    import xml.etree.ElementTree as ET
-    from urllib.parse import quote
+    ns = "http://www.sitemaps.org/schemas/sitemap/0.9"
+    ET.register_namespace("", ns)
+    urlset = ET.Element(f"{{{ns}}}urlset")
 
-    namespace = "http://www.sitemaps.org/schemas/sitemap/0.9"
-    ET.register_namespace("", namespace)
+    paginas = [("", None), ("sobre.html", None), ("links.html", None)]
+    paginas += [(f"noticias/{m['slug']}.html", m["data"] or None) for m in materias]
 
-    urlset = ET.Element(f"{{{namespace}}}urlset")
-
-    # Páginas fixas do site.
-    caminhos = [
-        "index.html",
-        "sobre.html",
-        "links.html",
-    ]
-
-    # Todas as matérias publicadas.
-    caminhos.extend(
-        f"noticias/{m['slug']}.html"
-        for m in materias
-    )
-
-    for caminho in caminhos:
-        url = ET.SubElement(urlset, f"{{{namespace}}}url")
-        loc = ET.SubElement(url, f"{{{namespace}}}loc")
-
-        # A página inicial usa a URL principal, sem index.html.
-        if caminho == "index.html":
-            loc.text = f"{SITE_URL}/"
-        else:
-            caminho_url = quote(caminho, safe="/")
-            loc.text = f"{SITE_URL}/{caminho_url}"
+    for caminho, data in paginas:
+        url = ET.SubElement(urlset, f"{{{ns}}}url")
+        ET.SubElement(url, f"{{{ns}}}loc").text = f"{SITE_URL}/{quote(caminho, safe='/')}"
+        if data:
+            ET.SubElement(url, f"{{{ns}}}lastmod").text = data[:10]  # YYYY-MM-DD
 
     arvore = ET.ElementTree(urlset)
     ET.indent(arvore, space="  ")
-
-    destino = SAIDA / "sitemap.xml"
-    arvore.write(
-        destino,
-        encoding="utf-8",
-        xml_declaration=True,
-    )
-
-    print(f"Sitemap gerado: {destino}")
-    print(f"URLs incluídas: {len(caminhos)}")
+    arvore.write(SAIDA / "sitemap.xml", encoding="utf-8", xml_declaration=True)
+    print(f"Sitemap gerado: {len(paginas)} URLs")
 
 
 def montar():
