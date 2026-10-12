@@ -12,6 +12,8 @@ MODELO = """<!doctype html>
 
 def gerar_redirecionamentos(materias):
     for m in materias:
+        if m["slug"] not in config.REDIRECIONAR_ANTIGOS:
+            continue
         relativo = m["caminho"].removeprefix("noticias/")  # relativo à pasta noticias/
         antigo = config.SAIDA / "noticias" / f"{m['slug']}.html"
         antigo.parent.mkdir(parents=True, exist_ok=True)

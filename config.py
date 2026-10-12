@@ -20,3 +20,13 @@ LINKS = [
     {"titulo": "LinkedIn", "url": "https://www.linkedin.com/in/adryan-de-alencar-61b386309", "desc": "Perfil profissional"},
     {"titulo": "Lattes", "url": "http://lattes.cnpq.br/3380250362638685", "desc": "Currículo Lattes"},
 ]
+
+# Matérias que já circulavam com o endereço antigo (noticias/<slug>.html).
+# O build deixa uma página-ponte só para estes slugs. Matérias novas não entram aqui.
+REDIRECIONAR_ANTIGOS = [
+    "a-relacao-da-filosofia-estetica-com-o-fingidor-de-samir-yazbek",
+    "o-fingidor-de-samir-yazbek",
+    "primeiro-turno-eleicoes-2026",
+    "uma-reflexao-sobre-etnografia",
+    "hegemonia-fora-do-senso-comum-um-estudo-gramsciano",
+]
