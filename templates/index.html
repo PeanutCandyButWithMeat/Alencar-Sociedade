@@ -11,7 +11,7 @@
     <h1 class="hero__title">{{ destaque.titulo }}</h1>
     <p class="hero__dek">{{ destaque.resumo }}</p>
     <p class="hero__byline">Por {{ destaque.autor }} · {{ destaque.tempo_leitura }}</p>
-    <a class="hero__link" href="noticias/{{ destaque.slug }}.html">Ler matéria completa</a>
+    <a class="hero__link" href="{{ base_path }}{{ destaque.caminho }}">Ler matéria completa</a>
   </article>
   {% endif %}
 
@@ -22,7 +22,7 @@
         <span class="tag tag--category">{{ m.categoria }}</span>
         <span class="tag tag--lang">{{ m.idioma }}</span>
       </p>
-      <h2 class="card__title"><a href="noticias/{{ m.slug }}.html">{{ m.titulo }}</a></h2>
+      <h2 class="card__title"><a href="{{ base_path }}{{ m.caminho }}">{{ m.titulo }}</a></h2>
       <p class="card__dek">{{ m.resumo }}</p>
     </article>
     {% endfor %}

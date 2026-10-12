@@ -11,7 +11,7 @@ def gerar_sitemap(materias):
     urlset = ET.Element(f"{{{NS}}}urlset")
 
     paginas = [("", None), ("sobre.html", None), ("links.html", None)]
-    paginas += [(f"noticias/{m['slug']}.html", m["data"] or None) for m in materias]
+    paginas += [(m["caminho"], m["data"] or None) for m in materias]
 
     for caminho, data in paginas:
         url = ET.SubElement(urlset, f"{{{NS}}}url")

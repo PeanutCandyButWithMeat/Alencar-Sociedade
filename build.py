@@ -11,6 +11,7 @@ import config
 from src.covers import gerar_og
 from src.git_publish import publicar
 from src.loader import carregar_materias
+from src.redirects import gerar_redirecionamentos
 from src.publishers.bluesky import garantir_post, web_url
 from src.render import render
 from src.search_index import gerar_indice_busca
@@ -24,7 +25,6 @@ def titulo_pagina(nome=None):
 def preparar_saida():
     shutil.rmtree(config.SAIDA, ignore_errors=True)
     shutil.copytree(config.STATIC, config.SAIDA)
-    (config.SAIDA / "noticias").mkdir(exist_ok=True)
 
 
 def gerar_paginas_fixas(materias):
@@ -41,7 +41,7 @@ def gerar_paginas_fixas(materias):
 
 
 def gerar_materia(m):
-    url = f"{config.SITE_URL}/noticias/{m['slug']}.html"
+    url = f"{config.SITE_URL}/{m['caminho']}"
     imagem = m.get("imagem") or gerar_og(m)
 
     # Bluesky: posta (se ainda não postou) usando a imagem da matéria como capa
@@ -50,8 +50,10 @@ def gerar_materia(m):
     m["bluesky_uri"] = uri
     m["bluesky_web"] = web_url(uri) if uri else None
 
-    render("article.html", config.SAIDA / "noticias" / f"{m['slug']}.html",
-           **m, title=titulo_pagina(m["titulo"]), base_path="../",
+    destino = config.SAIDA / m["caminho"]
+    destino.parent.mkdir(parents=True, exist_ok=True)
+    render("article.html", destino,
+           **m, title=titulo_pagina(m["titulo"]),
            html_lang="en" if m["idioma"].upper() == "EN" else "pt-BR",
            og_image=f"{config.SITE_URL}/{imagem}", og_url=url)
 
@@ -62,6 +64,7 @@ def montar():
     gerar_paginas_fixas(materias)
     for m in materias:
         gerar_materia(m)
+    gerar_redirecionamentos(materias)
     gerar_indice_busca(materias)
     gerar_sitemap(materias)
     print(f"Build concluído: {len(materias)} matéria(s) em {config.SAIDA}/")
