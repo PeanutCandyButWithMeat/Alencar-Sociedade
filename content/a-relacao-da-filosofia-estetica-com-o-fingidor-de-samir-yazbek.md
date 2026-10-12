@@ -6,7 +6,7 @@ palavras_chave: ["O Fingidor", "Samir Yazbek", "Fernando Pessoa", "teatro", "Mar
 data: 2026-10-12
 autor: "Adham Goulart"
 tempo_leitura: "8 min de leitura"
-resumo: "Uma reflexão sobre a educação estética a partir de Schiller, Goethe e Kant, explorando como a experiência teatral pode ampliar a formação ética e a liberdade individual. A partir de O Fingidor, de Samir Yazbek, e de uma peça sobre Fernando Pessoa, o autor descobre na arte um caminho para a sensibilidade, a empatia e a realização humana, concluindo com um convite: Sentire Aude! — ousar sentir."
+resumo: "Uma reflexão sobre a educação estética a partir de Schiller, Goethe e Kant, explorando como a experiência teatral pode ampliar a formação ética e a liberdade individual. A partir de O Fingidor, de Samir Yazbek, o autor descobre na arte um caminho para a sensibilidade, a empatia e a realização humana, concluindo com um convite: Sentire Aude! — ousar sentir."
 destaque: true
 ---
 
