@@ -1,10 +1,14 @@
 import json
 import os
-from pathlib import Path
 import time
+from pathlib import Path
+
 from atproto_client.exceptions import InvokeTimeoutError
 
-ARQUIVO = Path(__file__).parent / "bluesky.json"
+import config
+
+ARQUIVO = config.DADOS / "bluesky.json"
+
 
 def _login(client, tentativas=3):
     for i in range(1, tentativas + 1):
@@ -17,11 +21,13 @@ def _login(client, tentativas=3):
             print(f"Timeout ao conectar no Bluesky (tentativa {i}/{tentativas}), tentando de novo…")
             time.sleep(3)
 
+
 def _carregar():
     return json.loads(ARQUIVO.read_text("utf-8")) if ARQUIVO.exists() else {}
 
 
 def _salvar(dados):
+    ARQUIVO.parent.mkdir(exist_ok=True)
     ARQUIVO.write_text(json.dumps(dados, indent=2, ensure_ascii=False), "utf-8")
 
 

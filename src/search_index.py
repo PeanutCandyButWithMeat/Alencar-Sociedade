@@ -1,0 +1,11 @@
+import json
+
+import config
+
+CAMPOS = ("titulo", "categoria", "idioma", "palavras_chave", "resumo")
+
+
+def gerar_indice_busca(materias):
+    indice = [{**{c: m[c] for c in CAMPOS}, "url": f"noticias/{m['slug']}.html"} for m in materias]
+    (config.SAIDA / "search-index.json").write_text(
+        json.dumps(indice, ensure_ascii=False, indent=2), encoding="utf-8")
