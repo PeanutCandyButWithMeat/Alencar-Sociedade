@@ -88,6 +88,54 @@ def render(modelo, destino, **ctx):
     destino.write_text(env.get_template(modelo).render(**ctx), encoding="utf-8")
 
 
+def gerar_sitemap(materias):
+    """Gera sitemap.xml com todas as páginas públicas do site."""
+    import xml.etree.ElementTree as ET
+    from urllib.parse import quote
+
+    namespace = "http://www.sitemaps.org/schemas/sitemap/0.9"
+    ET.register_namespace("", namespace)
+
+    urlset = ET.Element(f"{{{namespace}}}urlset")
+
+    # Páginas fixas do site.
+    caminhos = [
+        "index.html",
+        "sobre.html",
+        "links.html",
+    ]
+
+    # Todas as matérias publicadas.
+    caminhos.extend(
+        f"noticias/{m['slug']}.html"
+        for m in materias
+    )
+
+    for caminho in caminhos:
+        url = ET.SubElement(urlset, f"{{{namespace}}}url")
+        loc = ET.SubElement(url, f"{{{namespace}}}loc")
+
+        # A página inicial usa a URL principal, sem index.html.
+        if caminho == "index.html":
+            loc.text = f"{SITE_URL}/"
+        else:
+            caminho_url = quote(caminho, safe="/")
+            loc.text = f"{SITE_URL}/{caminho_url}"
+
+    arvore = ET.ElementTree(urlset)
+    ET.indent(arvore, space="  ")
+
+    destino = SAIDA / "sitemap.xml"
+    arvore.write(
+        destino,
+        encoding="utf-8",
+        xml_declaration=True,
+    )
+
+    print(f"Sitemap gerado: {destino}")
+    print(f"URLs incluídas: {len(caminhos)}")
+
+
 def montar():
     shutil.rmtree(SAIDA, ignore_errors=True)
     shutil.copytree(RAIZ / "static", SAIDA)
@@ -132,7 +180,7 @@ def montar():
     indice = [{**{c: m[c] for c in campos}, "url": f"noticias/{m['slug']}.html"} for m in materias]
     (SAIDA / "search-index.json").write_text(
         json.dumps(indice, ensure_ascii=False, indent=2), encoding="utf-8")
-
+    gerar_sitemap(materias)
     print(f"Build concluído: {len(materias)} matéria(s) em {SAIDA}/")
 
 
