@@ -663,51 +663,32 @@ a.tag--category:hover { background: var(--petrol); color: var(--cream); }
 
 /* ---------- Mobile: o menu lateral assume a navegação ---------- */
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
   .nav { display: none; }
-  .logo { font-size: 1.4rem; }
+  .site-header__inner { justify-content: flex-start; gap: 16px; }
 }
 
-/* ---------- Header em caixinhas ---------- */
+/* ---------- Navegação do header em caixinhas ---------- */
 
-/* Linha 1: [Menu] [logo]. Linha 2: as caixinhas de navegação ocupando a largura toda. */
-.site-header__inner {
-  justify-content: flex-start;
-  gap: 14px 18px;
-}
-
-.logo { flex: 1; }
-
-.menu-btn,
-.nav a {
-  border: 1px solid var(--cream);
-  border-radius: 3px;
-  padding: 8px 16px;
-  color: var(--cream);
-  font-size: 0.95rem;
-  line-height: 1.2;
-  text-decoration: none;
-  transition: background 0.15s, color 0.15s;
-}
-
-.menu-btn { margin-left: 0; }
-
+/* O .nav ocupa a segunda linha inteira; cada caixinha cresce para preencher a largura. */
 .nav {
   flex: 1 1 100%;
   gap: 10px;
 }
 
 .nav a {
-  flex: 1 1 auto;   /* cada caixinha cresce para preencher a linha toda */
+  flex: 1 1 auto;
   text-align: center;
   white-space: nowrap;
+  border: 1px solid var(--cream);
+  border-radius: 3px;
+  padding: 8px 16px;
+  line-height: 1.2;
+  transition: background 0.15s, color 0.15s;
 }
 
-.menu-btn:hover,
 .nav a:hover {
   background: var(--cream);
   color: var(--terracotta);
   text-decoration: none;
 }
-
-.menu-btn:hover span { text-decoration: none; }
