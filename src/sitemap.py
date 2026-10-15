@@ -6,11 +6,12 @@ import config
 NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 
 
-def gerar_sitemap(materias):
+def gerar_sitemap(materias, extras=()):
     ET.register_namespace("", NS)
     urlset = ET.Element(f"{{{NS}}}urlset")
 
     paginas = [("", None), ("sobre.html", None), ("links.html", None)]
+    paginas += [(c, None) for c in extras]  # páginas de listagem (seção/categoria/autor)
     paginas += [(m["caminho"], m["data"] or None) for m in materias]
 
     for caminho, data in paginas:

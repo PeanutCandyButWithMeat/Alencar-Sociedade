@@ -1,5 +1,6 @@
 ---
 titulo: "O Fingidor de Samir Yazbek, uma análise"
+secao: "Arte e Cultura"
 categoria: "Crítica Cultural"
 idioma: "PT"
 palavras_chave: ["O Fingidor", "Samir Yazbek", "Fernando Pessoa", "teatro", "indústria cultural", "Adorno", "Horkheimer"]
@@ -8,6 +9,7 @@ autor: "Adryan de Alencar"
 tempo_leitura: "3 min de leitura"
 resumo: "Uma reflexão sobre a peça O Fingidor, de Samir Yazbek, sua capacidade de aproximar Fernando Pessoa do público infantojuvenil e a experiência teatral como contraponto à cultura reificada da indústria cultural."
 destaque: true
+enderecos_antigos: ["noticias/critica-cultural/pt/o-fingidor-de-samir-yazbek.html"]
 ---
 
 No dia 09/10, fui assistir à peça de teatro *O Fingidor*, de Samir Yazbek, no teatro do [SESI](https://www.sesisp.org.br/evento/5e020f83-2482-4cc0-92c7-956d0936ab6f/o-fingidor), em São José dos Campos, ou melhor, pude assistir à estreia desta ótima peça! A escolha de Fernando Pessoa para uma produção que pretendia atingir ao público mais novo foi ótima. O espírito zombeteiro que aflige e move a vida de Pessoa, aliado à liberdade artística de uma representação ficcional, foi bem aproveitado. Muitas vezes, peguei-me rindo do mero caminhar travesso de Fernando Pessoa enquanto ele concatenava suas peripécias.

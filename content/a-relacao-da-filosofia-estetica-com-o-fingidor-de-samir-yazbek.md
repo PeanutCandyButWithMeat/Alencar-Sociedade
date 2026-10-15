@@ -1,5 +1,6 @@
 ---
 titulo: "A relação da filosofia estética de Schiller com a peça teatral O Fingidor, de Samir Yazbek"
+secao: "Arte e Cultura"
 categoria: "Ensaios"
 idioma: "PT"
 palavras_chave: ["O Fingidor", "Samir Yazbek", "Fernando Pessoa", "teatro", "Marco Aurélio Werle", "Romantismo alemão", "Filosofia", "Schiller"]
@@ -8,6 +9,7 @@ autor: "Adham Goulart"
 tempo_leitura: "8 min de leitura"
 resumo: "Uma reflexão sobre a educação estética a partir de Schiller, Goethe e Kant, explorando como a experiência teatral pode ampliar a formação ética e a liberdade individual. A partir de O Fingidor, de Samir Yazbek, o autor descobre na arte um caminho para a sensibilidade, a empatia e a realização humana, concluindo com um convite: Sentire Aude! — ousar sentir."
 destaque: true
+enderecos_antigos: ["noticias/ensaios/pt/a-relacao-da-filosofia-estetica-com-o-fingidor-de-samir-yazbek.html"]
 ---
 
 Nos últimos dias, motivei-me a buscar informações sobre o romantismo alemão, especialmente por meio de vídeos do professor da USP, essa verdadeiramente Weltseele do hegelianismo brasileiro, Marco Aurélio Werle. Um em especial me entusiasmou: *Goethe e a Filosofia: Teatro e Vida como Formação e Cultura*. Em certo momento, ele aborda a obra do filósofo romântico Schiller, *A Educação Estética do Homem*. Werle menciona indiretamente e de forma breve o seguinte trecho: “Para resolver na experiência o problema político, é necessário caminhar através do estético, pois é pela beleza que se vai à liberdade”. Quando o professor transmitiu esse trecho, o âmago kantiano da minha alma se abalou. Embora minhas éticas transcendentais sejam sustentáveis, elas são incompletas e abstratas, por virem apenas do rígido códice kantiano. A esteticidade é um componente ético por incorporar as experiências humanas no âmbito categórico. A ética não deve proceder apenas do racionalismo, mas também do saber estético. Por isso, cheguei a uma conclusão necessária por si mesma: meu modo de vida não deve se pautar apenas pelos ensinamentos filosóficos e literários, mas também devo educar-me pela estética, para apreender o bom e o belo.

@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+<main class="wrap">
+  <header class="listagem__cab">
+    {% if subtitulo %}<p class="listagem__sub">{{ subtitulo }}</p>{% endif %}
+    <h1 class="listagem__titulo">{{ titulo_listagem }}</h1>
+  </header>
+
+  <section class="grid" aria-label="{{ titulo_listagem }}">
+    {% for m in materias %}
+      {% include "_card.html" %}
+    {% else %}
+      <p class="listagem__vazio">Ainda não há publicações aqui.</p>
+    {% endfor %}
+  </section>
+</main>
+{% endblock %}

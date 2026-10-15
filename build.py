@@ -10,10 +10,11 @@ import shutil
 import config
 from src.covers import gerar_og
 from src.git_publish import publicar
+from src.listagens import gerar_listagens, montar_menu
 from src.loader import carregar_materias
 from src.redirects import gerar_redirecionamentos
 from src.publishers.bluesky import garantir_post, web_url
-from src.render import render
+from src.render import env, render
 from src.search_index import gerar_indice_busca
 from src.sitemap import gerar_sitemap
 
@@ -61,12 +62,15 @@ def gerar_materia(m):
 def montar():
     preparar_saida()
     materias = carregar_materias()
+    menu = montar_menu(materias)
+    env.globals["menu"] = menu  # disponível em todos os templates (header e menu lateral)
     gerar_paginas_fixas(materias)
+    listagens = gerar_listagens(materias, menu)
     for m in materias:
         gerar_materia(m)
     gerar_redirecionamentos(materias)
     gerar_indice_busca(materias)
-    gerar_sitemap(materias)
+    gerar_sitemap(materias, extras=listagens)
     print(f"Build concluído: {len(materias)} matéria(s) em {config.SAIDA}/")
 
 

@@ -473,3 +473,197 @@ button:focus-visible {
 
 .views { display: inline-flex; align-items: center; gap: .25em; }
 .views svg { vertical-align: -2px; }
+
+
+/* ---------- Header: botão Menu ---------- */
+
+.site-header__inner { align-items: center; }
+
+.menu-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  border: 0;
+  padding: 4px 6px;
+  margin-left: -6px;
+  color: var(--cream);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.menu-btn:hover span { text-decoration: underline; }
+
+.menu-btn:focus-visible,
+.drawer a:focus-visible,
+.drawer__fechar:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+/* ---------- Menu lateral (drawer) ---------- */
+
+.drawer-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(42, 24, 16, 0.5);
+  z-index: 90;
+}
+
+.drawer-overlay[hidden] { display: none; }
+
+.drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: min(320px, 86vw);
+  background: var(--cream);
+  color: var(--ink);
+  z-index: 100;
+  overflow-y: auto;
+  padding: 20px 24px 40px;
+  transform: translateX(-100%);
+  visibility: hidden;
+  transition: transform 0.22s ease, visibility 0.22s;
+  box-shadow: 4px 0 24px rgba(42, 24, 16, 0.25);
+}
+
+.menu-aberto .drawer {
+  transform: none;
+  visibility: visible;
+}
+
+.menu-aberto { overflow: hidden; }
+
+.drawer__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-synthesis: none;
+  font-size: 1.2rem;
+  color: var(--terracotta);
+  margin-bottom: 8px;
+}
+
+.drawer__fechar {
+  background: transparent;
+  border: 0;
+  font-size: 2rem;
+  line-height: 1;
+  color: var(--terracotta);
+  cursor: pointer;
+}
+
+.drawer__bloco {
+  padding: 16px 0;
+  border-bottom: 1px solid rgba(42, 24, 16, 0.15);
+}
+
+.drawer__bloco:last-child { border-bottom: none; }
+
+.drawer__titulo {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-synthesis: none;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--petrol);
+  margin: 0 0 10px;
+}
+
+.drawer a {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.drawer a:hover { text-decoration: underline; color: var(--terracotta); }
+
+.drawer__paginas { display: flex; flex-direction: column; gap: 8px; }
+
+.drawer__secao { margin: 12px 0 4px; font-weight: 600; }
+
+.drawer__lista {
+  list-style: none;
+  margin: 0 0 8px;
+  padding: 0 0 0 14px;
+  border-left: 2px solid var(--amber);
+}
+
+.drawer__lista--solta { padding-left: 0; border-left: none; }
+
+.drawer__lista li { margin: 4px 0; font-size: 0.95rem; }
+
+.drawer__n {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-left: 4px;
+}
+
+/* ---------- Páginas de listagem ---------- */
+
+.listagem__cab {
+  padding: 48px 0 12px;
+  border-bottom: 1px solid rgba(42, 24, 16, 0.15);
+}
+
+.listagem__sub {
+  margin: 0 0 6px;
+  font-size: 0.85rem;
+  color: var(--petrol);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.listagem__titulo {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-synthesis: none;
+  font-size: 2.2rem;
+  line-height: 1.15;
+  margin: 0 0 16px;
+  color: var(--ink);
+}
+
+.listagem__vazio { color: var(--ink-soft); padding: 32px 0; }
+
+/* ---------- Tags e bylines como links ---------- */
+
+a.tag { text-decoration: none; }
+a.tag--category:hover { background: var(--petrol); color: var(--cream); }
+
+.card__byline {
+  margin: 10px 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+}
+
+.card__byline a,
+.hero__byline a,
+.article__byline a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: rgba(42, 24, 16, 0.3);
+}
+
+.card__byline a:hover,
+.hero__byline a:hover,
+.article__byline a:hover { text-decoration-color: currentColor; }
+
+/* ---------- Poemas: preserva as quebras de linha ---------- */
+
+.texto--poema p {
+  white-space: pre-line;
+  margin: 0 0 1.6em;
+}
+
+/* ---------- Mobile: o menu lateral assume a navegação ---------- */
+
+@media (max-width: 760px) {
+  .nav { display: none; }
+  .site-header__inner { justify-content: flex-start; gap: 16px; }
+}

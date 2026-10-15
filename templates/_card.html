@@ -1,0 +1,9 @@
+<article class="card">
+  <p class="card__meta">
+    <a class="tag tag--category" href="{{ base_path }}secao/{{ m.secao_slug }}/{{ m.categoria_slug }}.html">{{ m.categoria }}</a>
+    <span class="tag tag--lang">{{ m.idioma }}</span>
+  </p>
+  <h2 class="card__title"><a href="{{ base_path }}{{ m.caminho }}">{{ m.titulo }}</a></h2>
+  <p class="card__dek">{{ m.resumo }}</p>
+  <p class="card__byline">Por <a href="{{ base_path }}autor/{{ m.autor_slug }}.html">{{ m.autor }}</a>{% if m.secao_slug != menu.secoes[0].slug %} · {{ m.secao }}{% endif %}</p>
+</article>

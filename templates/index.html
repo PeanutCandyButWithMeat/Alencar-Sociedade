@@ -5,26 +5,19 @@
   {% if destaque %}
   <article class="hero">
     <p class="hero__meta">
-      <span class="tag tag--category">{{ destaque.categoria }}</span>
+      <a class="tag tag--category" href="{{ base_path }}secao/{{ destaque.secao_slug }}/{{ destaque.categoria_slug }}.html">{{ destaque.categoria }}</a>
       <span class="tag tag--lang">{{ destaque.idioma }}</span>
     </p>
     <h1 class="hero__title">{{ destaque.titulo }}</h1>
     <p class="hero__dek">{{ destaque.resumo }}</p>
-    <p class="hero__byline">Por {{ destaque.autor }} · {{ destaque.tempo_leitura }}</p>
+    <p class="hero__byline">Por <a href="{{ base_path }}autor/{{ destaque.autor_slug }}.html">{{ destaque.autor }}</a> · {{ destaque.tempo_leitura }}</p>
     <a class="hero__link" href="{{ base_path }}{{ destaque.caminho }}">Ler matéria completa</a>
   </article>
   {% endif %}
 
   <section class="grid" aria-label="Matérias recentes">
     {% for m in materias %}
-    <article class="card">
-      <p class="card__meta">
-        <span class="tag tag--category">{{ m.categoria }}</span>
-        <span class="tag tag--lang">{{ m.idioma }}</span>
-      </p>
-      <h2 class="card__title"><a href="{{ base_path }}{{ m.caminho }}">{{ m.titulo }}</a></h2>
-      <p class="card__dek">{{ m.resumo }}</p>
-    </article>
+      {% include "_card.html" %}
     {% endfor %}
   </section>
 

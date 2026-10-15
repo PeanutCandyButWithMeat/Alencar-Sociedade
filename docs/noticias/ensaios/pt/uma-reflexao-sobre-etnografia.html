@@ -22,14 +22,78 @@
 
 <header class="site-header">
   <div class="wrap site-header__inner">
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2.2H3zm0 5h18v2.2H3zm0 5h18v2.2H3z"/></svg>
+      <span>Menu</span>
+    </button>
     <a href="../../../index.html" class="logo">Alencar e Sociedade</a>
-    <nav class="nav">
+    <nav class="nav" aria-label="Principal">
       <a href="../../../index.html">Início</a>
+      
+      <a href="../../../secao/noticias.html">Notícias</a>
+      
+      <a href="../../../secao/arte-e-cultura.html">Arte e Cultura</a>
+      
+      <a href="../../../autor/adryan-de-alencar.html">Só Adryan</a>
       <a href="../../../sobre.html">Sobre</a>
       <a href="../../../links.html">Links</a>
     </nav>
   </div>
 </header>
+
+<div class="drawer-overlay" id="drawer-overlay" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Menu" aria-hidden="true">
+  <div class="drawer__topo">
+    <strong>Menu</strong>
+    <button type="button" class="drawer__fechar" id="drawer-fechar" aria-label="Fechar menu">&times;</button>
+  </div>
+
+  <nav class="drawer__bloco drawer__paginas">
+    <a href="../../../index.html">Início</a>
+    <a href="../../../sobre.html">Sobre</a>
+    <a href="../../../links.html">Links</a>
+  </nav>
+
+  <nav class="drawer__bloco" aria-label="Seções e categorias">
+    <h2 class="drawer__titulo">Seções</h2>
+    
+    <p class="drawer__secao"><a href="../../../secao/noticias.html">Notícias</a> <span class="drawer__n">3</span></p>
+    
+    <ul class="drawer__lista">
+      
+      <li><a href="../../../secao/noticias/ensaios.html">Ensaios</a> <span class="drawer__n">1</span></li>
+      
+      <li><a href="../../../secao/noticias/teoria-politica.html">Teoria Política</a> <span class="drawer__n">2</span></li>
+      
+    </ul>
+    
+    
+    <p class="drawer__secao"><a href="../../../secao/arte-e-cultura.html">Arte e Cultura</a> <span class="drawer__n">3</span></p>
+    
+    <ul class="drawer__lista">
+      
+      <li><a href="../../../secao/arte-e-cultura/critica-cultural.html">Crítica Cultural</a> <span class="drawer__n">1</span></li>
+      
+      <li><a href="../../../secao/arte-e-cultura/ensaios.html">Ensaios</a> <span class="drawer__n">1</span></li>
+      
+      <li><a href="../../../secao/arte-e-cultura/poesia.html">Poesia</a> <span class="drawer__n">1</span></li>
+      
+    </ul>
+    
+    
+  </nav>
+
+  <nav class="drawer__bloco" aria-label="Autores">
+    <h2 class="drawer__titulo">Autores</h2>
+    <ul class="drawer__lista drawer__lista--solta">
+      
+      <li><a href="../../../autor/adryan-de-alencar.html">Adryan de Alencar</a> <span class="drawer__n">5</span></li>
+      
+      <li><a href="../../../autor/adham-goulart.html">Adham Goulart</a> <span class="drawer__n">1</span></li>
+      
+    </ul>
+  </nav>
+</aside>
 
 <div class="wave" aria-hidden="true">
   <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
@@ -42,12 +106,12 @@
 <main class="wrap wrap--article">
   <article class="article">
     <p class="article__meta">
-      <span class="tag tag--category">Ensaios</span>
+      <a class="tag tag--category" href="../../../secao/noticias/ensaios.html">Ensaios</a>
       <span class="tag tag--lang">PT</span>
     </p>
     <h1 class="article__title">Uma reflexão sobre etnografia</h1>
     <p class="article__byline">
-  Por Adryan de Alencar · 4 min de leitura
+  Por <a href="../../../autor/adryan-de-alencar.html">Adryan de Alencar</a> · 4 min de leitura
   <span class="views" id="views" hidden>
     · <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
     <span id="views-num"></span>
@@ -195,6 +259,27 @@
 </footer>
 
 
+
+<script>
+(() => {
+  const btn = document.getElementById("menu-btn");
+  const drawer = document.getElementById("drawer");
+  const overlay = document.getElementById("drawer-overlay");
+  const alternar = (abrir) => {
+    document.body.classList.toggle("menu-aberto", abrir);
+    drawer.setAttribute("aria-hidden", String(!abrir));
+    btn.setAttribute("aria-expanded", String(abrir));
+    overlay.hidden = !abrir;
+    if (abrir) drawer.querySelector("a").focus(); else btn.focus();
+  };
+  btn.addEventListener("click", () => alternar(!document.body.classList.contains("menu-aberto")));
+  document.getElementById("drawer-fechar").addEventListener("click", () => alternar(false));
+  overlay.addEventListener("click", () => alternar(false));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("menu-aberto")) alternar(false);
+  });
+})();
+</script>
 
 <script data-goatcounter="https://alencar.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

@@ -12,6 +12,15 @@ SITE_URL = "https://peanutcandybutwithmeat.github.io/Alencar-Sociedade"
 NOME_SITE = "Alencar e Sociedade"
 AUTOR_PADRAO = "Adryan de Alencar"
 
+# Seções do site, na ordem em que aparecem no header e no menu lateral.
+# O slug vira parte do endereço: <slug>/<categoria>/<idioma>/<matéria>.html
+# A primeira é a padrão: matéria sem "secao" no frontmatter cai nela
+# (e continua em noticias/..., então nenhum link antigo muda).
+SECOES = [
+    {"slug": "noticias", "nome": "Notícias"},
+    {"slug": "arte-e-cultura", "nome": "Arte e Cultura"},
+]
+
 FONTE_BOLD = STATIC / "fonts/ZTNature-Black.ttf"
 FONTE_REG = STATIC / "fonts/ZTNature-Medium.ttf"
 

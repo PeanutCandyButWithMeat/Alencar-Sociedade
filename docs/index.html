@@ -22,14 +22,78 @@
 
 <header class="site-header">
   <div class="wrap site-header__inner">
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2.2H3zm0 5h18v2.2H3zm0 5h18v2.2H3z"/></svg>
+      <span>Menu</span>
+    </button>
     <a href="index.html" class="logo">Alencar e Sociedade</a>
-    <nav class="nav">
+    <nav class="nav" aria-label="Principal">
       <a href="index.html">Início</a>
+      
+      <a href="secao/noticias.html">Notícias</a>
+      
+      <a href="secao/arte-e-cultura.html">Arte e Cultura</a>
+      
+      <a href="autor/adryan-de-alencar.html">Só Adryan</a>
       <a href="sobre.html">Sobre</a>
       <a href="links.html">Links</a>
     </nav>
   </div>
 </header>
+
+<div class="drawer-overlay" id="drawer-overlay" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Menu" aria-hidden="true">
+  <div class="drawer__topo">
+    <strong>Menu</strong>
+    <button type="button" class="drawer__fechar" id="drawer-fechar" aria-label="Fechar menu">&times;</button>
+  </div>
+
+  <nav class="drawer__bloco drawer__paginas">
+    <a href="index.html">Início</a>
+    <a href="sobre.html">Sobre</a>
+    <a href="links.html">Links</a>
+  </nav>
+
+  <nav class="drawer__bloco" aria-label="Seções e categorias">
+    <h2 class="drawer__titulo">Seções</h2>
+    
+    <p class="drawer__secao"><a href="secao/noticias.html">Notícias</a> <span class="drawer__n">3</span></p>
+    
+    <ul class="drawer__lista">
+      
+      <li><a href="secao/noticias/ensaios.html">Ensaios</a> <span class="drawer__n">1</span></li>
+      
+      <li><a href="secao/noticias/teoria-politica.html">Teoria Política</a> <span class="drawer__n">2</span></li>
+      
+    </ul>
+    
+    
+    <p class="drawer__secao"><a href="secao/arte-e-cultura.html">Arte e Cultura</a> <span class="drawer__n">3</span></p>
+    
+    <ul class="drawer__lista">
+      
+      <li><a href="secao/arte-e-cultura/critica-cultural.html">Crítica Cultural</a> <span class="drawer__n">1</span></li>
+      
+      <li><a href="secao/arte-e-cultura/ensaios.html">Ensaios</a> <span class="drawer__n">1</span></li>
+      
+      <li><a href="secao/arte-e-cultura/poesia.html">Poesia</a> <span class="drawer__n">1</span></li>
+      
+    </ul>
+    
+    
+  </nav>
+
+  <nav class="drawer__bloco" aria-label="Autores">
+    <h2 class="drawer__titulo">Autores</h2>
+    <ul class="drawer__lista drawer__lista--solta">
+      
+      <li><a href="autor/adryan-de-alencar.html">Adryan de Alencar</a> <span class="drawer__n">5</span></li>
+      
+      <li><a href="autor/adham-goulart.html">Adham Goulart</a> <span class="drawer__n">1</span></li>
+      
+    </ul>
+  </nav>
+</aside>
 
 <div class="wave" aria-hidden="true">
   <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
@@ -43,53 +107,67 @@
   
   <article class="hero">
     <p class="hero__meta">
-      <span class="tag tag--category">Ensaios</span>
+      <a class="tag tag--category" href="secao/arte-e-cultura/ensaios.html">Ensaios</a>
       <span class="tag tag--lang">PT</span>
     </p>
     <h1 class="hero__title">A relação da filosofia estética de Schiller com a peça teatral O Fingidor, de Samir Yazbek</h1>
     <p class="hero__dek">Uma reflexão sobre a educação estética a partir de Schiller, Goethe e Kant, explorando como a experiência teatral pode ampliar a formação ética e a liberdade individual. A partir de O Fingidor, de Samir Yazbek, o autor descobre na arte um caminho para a sensibilidade, a empatia e a realização humana, concluindo com um convite: Sentire Aude! — ousar sentir.</p>
-    <p class="hero__byline">Por Adham Goulart · 8 min de leitura</p>
-    <a class="hero__link" href="noticias/ensaios/pt/a-relacao-da-filosofia-estetica-com-o-fingidor-de-samir-yazbek.html">Ler matéria completa</a>
+    <p class="hero__byline">Por <a href="autor/adham-goulart.html">Adham Goulart</a> · 8 min de leitura</p>
+    <a class="hero__link" href="arte-e-cultura/ensaios/pt/a-relacao-da-filosofia-estetica-com-o-fingidor-de-samir-yazbek.html">Ler matéria completa</a>
   </article>
   
 
   <section class="grid" aria-label="Matérias recentes">
     
-    <article class="card">
-      <p class="card__meta">
-        <span class="tag tag--category">Crítica Cultural</span>
-        <span class="tag tag--lang">PT</span>
-      </p>
-      <h2 class="card__title"><a href="noticias/critica-cultural/pt/o-fingidor-de-samir-yazbek.html">O Fingidor de Samir Yazbek, uma análise</a></h2>
-      <p class="card__dek">Uma reflexão sobre a peça O Fingidor, de Samir Yazbek, sua capacidade de aproximar Fernando Pessoa do público infantojuvenil e a experiência teatral como contraponto à cultura reificada da indústria cultural.</p>
-    </article>
+      <article class="card">
+  <p class="card__meta">
+    <a class="tag tag--category" href="secao/arte-e-cultura/poesia.html">Poesia</a>
+    <span class="tag tag--lang">PT</span>
+  </p>
+  <h2 class="card__title"><a href="arte-e-cultura/poesia/pt/a-triade.html">A Tríade</a></h2>
+  <p class="card__dek">Três poemas em sequência: Luar, Primavera e Eclipse.</p>
+  <p class="card__byline">Por <a href="autor/adryan-de-alencar.html">Adryan de Alencar</a> · Arte e Cultura</p>
+</article>
     
-    <article class="card">
-      <p class="card__meta">
-        <span class="tag tag--category">Teoria Política</span>
-        <span class="tag tag--lang">PT</span>
-      </p>
-      <h2 class="card__title"><a href="noticias/teoria-politica/pt/primeiro-turno-eleicoes-2026.html">Primeiro turno das eleições de 2026, o que isso reflete sobre a democracia no Brasil?</a></h2>
-      <p class="card__dek">A surpreendente liderança de Flávio Bolsonaro no primeiro turno revela, mais do que uma disputa eleitoral, uma crise da democracia representativa brasileira. A partir dos conceitos de egoísmo e alienação, o texto discute como valores conservadores, discursos meritocráticos e percepções imediatistas da política influenciam o comportamento eleitoral.</p>
-    </article>
+      <article class="card">
+  <p class="card__meta">
+    <a class="tag tag--category" href="secao/arte-e-cultura/critica-cultural.html">Crítica Cultural</a>
+    <span class="tag tag--lang">PT</span>
+  </p>
+  <h2 class="card__title"><a href="arte-e-cultura/critica-cultural/pt/o-fingidor-de-samir-yazbek.html">O Fingidor de Samir Yazbek, uma análise</a></h2>
+  <p class="card__dek">Uma reflexão sobre a peça O Fingidor, de Samir Yazbek, sua capacidade de aproximar Fernando Pessoa do público infantojuvenil e a experiência teatral como contraponto à cultura reificada da indústria cultural.</p>
+  <p class="card__byline">Por <a href="autor/adryan-de-alencar.html">Adryan de Alencar</a> · Arte e Cultura</p>
+</article>
     
-    <article class="card">
-      <p class="card__meta">
-        <span class="tag tag--category">Ensaios</span>
-        <span class="tag tag--lang">PT</span>
-      </p>
-      <h2 class="card__title"><a href="noticias/ensaios/pt/uma-reflexao-sobre-etnografia.html">Uma reflexão sobre etnografia</a></h2>
-      <p class="card__dek">Uma reflexão acerca das diferentes propostas e conclusões que um etnógrafo pode ter dependendo da sua relação com o grupo estudado.</p>
-    </article>
+      <article class="card">
+  <p class="card__meta">
+    <a class="tag tag--category" href="secao/noticias/teoria-politica.html">Teoria Política</a>
+    <span class="tag tag--lang">PT</span>
+  </p>
+  <h2 class="card__title"><a href="noticias/teoria-politica/pt/primeiro-turno-eleicoes-2026.html">Primeiro turno das eleições de 2026, o que isso reflete sobre a democracia no Brasil?</a></h2>
+  <p class="card__dek">A surpreendente liderança de Flávio Bolsonaro no primeiro turno revela, mais do que uma disputa eleitoral, uma crise da democracia representativa brasileira. A partir dos conceitos de egoísmo e alienação, o texto discute como valores conservadores, discursos meritocráticos e percepções imediatistas da política influenciam o comportamento eleitoral.</p>
+  <p class="card__byline">Por <a href="autor/adryan-de-alencar.html">Adryan de Alencar</a></p>
+</article>
     
-    <article class="card">
-      <p class="card__meta">
-        <span class="tag tag--category">Teoria Política</span>
-        <span class="tag tag--lang">PT</span>
-      </p>
-      <h2 class="card__title"><a href="noticias/teoria-politica/pt/hegemonia-fora-do-senso-comum-um-estudo-gramsciano.html">Hegemonia fora do senso comum, um estudo gramsciano</a></h2>
-      <p class="card__dek">A hegemonia além do senso comum, o que ela é sob a perspectiva de Antonio Gramsci</p>
-    </article>
+      <article class="card">
+  <p class="card__meta">
+    <a class="tag tag--category" href="secao/noticias/ensaios.html">Ensaios</a>
+    <span class="tag tag--lang">PT</span>
+  </p>
+  <h2 class="card__title"><a href="noticias/ensaios/pt/uma-reflexao-sobre-etnografia.html">Uma reflexão sobre etnografia</a></h2>
+  <p class="card__dek">Uma reflexão acerca das diferentes propostas e conclusões que um etnógrafo pode ter dependendo da sua relação com o grupo estudado.</p>
+  <p class="card__byline">Por <a href="autor/adryan-de-alencar.html">Adryan de Alencar</a></p>
+</article>
+    
+      <article class="card">
+  <p class="card__meta">
+    <a class="tag tag--category" href="secao/noticias/teoria-politica.html">Teoria Política</a>
+    <span class="tag tag--lang">PT</span>
+  </p>
+  <h2 class="card__title"><a href="noticias/teoria-politica/pt/hegemonia-fora-do-senso-comum-um-estudo-gramsciano.html">Hegemonia fora do senso comum, um estudo gramsciano</a></h2>
+  <p class="card__dek">A hegemonia além do senso comum, o que ela é sob a perspectiva de Antonio Gramsci</p>
+  <p class="card__byline">Por <a href="autor/adryan-de-alencar.html">Adryan de Alencar</a></p>
+</article>
     
   </section>
 
@@ -118,6 +196,27 @@
 
 <script src="js/busca.js" data-index="search-index.json"></script>
 
+
+<script>
+(() => {
+  const btn = document.getElementById("menu-btn");
+  const drawer = document.getElementById("drawer");
+  const overlay = document.getElementById("drawer-overlay");
+  const alternar = (abrir) => {
+    document.body.classList.toggle("menu-aberto", abrir);
+    drawer.setAttribute("aria-hidden", String(!abrir));
+    btn.setAttribute("aria-expanded", String(abrir));
+    overlay.hidden = !abrir;
+    if (abrir) drawer.querySelector("a").focus(); else btn.focus();
+  };
+  btn.addEventListener("click", () => alternar(!document.body.classList.contains("menu-aberto")));
+  document.getElementById("drawer-fechar").addEventListener("click", () => alternar(false));
+  overlay.addEventListener("click", () => alternar(false));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("menu-aberto")) alternar(false);
+  });
+})();
+</script>
 
 <script data-goatcounter="https://alencar.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

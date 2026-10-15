@@ -28,14 +28,19 @@ def carregar_materias():
             "resumo": "",
             "autor": config.AUTOR_PADRAO,
             "tempo_leitura": "",
+            "enderecos_antigos": [],  # onde a matéria já esteve; o build deixa uma ponte em cada um
+            "formato": "",  # "poema" preserva as quebras de linha dos versos
             **post.metadata,
             "data": str(post.metadata.get("data", "")),
             "destaque": bool(post.metadata.get("destaque")),
             "conteudo_html": markdown.markdown(post.content, extensions=["extra"]),
         }
-        # noticias/<categoria>/<idioma>/<slug>.html, tudo derivado do frontmatter
+        # <secao>/<categoria>/<idioma>/<slug>.html, tudo derivado do frontmatter
+        materia["secao"] = materia.get("secao") or config.SECOES[0]["nome"]
+        materia["secao_slug"] = slugificar(materia["secao"])
         materia["categoria_slug"] = slugificar(materia["categoria"])
-        materia["caminho"] = (f"noticias/{materia['categoria_slug']}/"
+        materia["autor_slug"] = slugificar(materia["autor"])
+        materia["caminho"] = (f"{materia['secao_slug']}/{materia['categoria_slug']}/"
                               f"{str(materia['idioma']).lower()}/{materia['slug']}.html")
         materia["base_path"] = "../" * materia["caminho"].count("/")
         materias.append(materia)

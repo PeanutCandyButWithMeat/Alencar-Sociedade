@@ -22,14 +22,59 @@
 
 <header class="site-header">
   <div class="wrap site-header__inner">
+    <button type="button" class="menu-btn" id="menu-btn" aria-expanded="false" aria-controls="drawer">
+      <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path fill="currentColor" d="M3 6h18v2.2H3zm0 5h18v2.2H3zm0 5h18v2.2H3z"/></svg>
+      <span>Menu</span>
+    </button>
     <a href="{{ base_path }}index.html" class="logo">Alencar e Sociedade</a>
-    <nav class="nav">
+    <nav class="nav" aria-label="Principal">
       <a href="{{ base_path }}index.html">Início</a>
+      {% for s in menu.secoes %}
+      <a href="{{ base_path }}secao/{{ s.slug }}.html">{{ s.nome }}</a>
+      {% endfor %}
+      <a href="{{ base_path }}autor/{{ menu.autor_principal.slug }}.html">Só {{ menu.autor_principal.nome.split()[0] }}</a>
       <a href="{{ base_path }}sobre.html">Sobre</a>
       <a href="{{ base_path }}links.html">Links</a>
     </nav>
   </div>
 </header>
+
+<div class="drawer-overlay" id="drawer-overlay" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Menu" aria-hidden="true">
+  <div class="drawer__topo">
+    <strong>Menu</strong>
+    <button type="button" class="drawer__fechar" id="drawer-fechar" aria-label="Fechar menu">&times;</button>
+  </div>
+
+  <nav class="drawer__bloco drawer__paginas">
+    <a href="{{ base_path }}index.html">Início</a>
+    <a href="{{ base_path }}sobre.html">Sobre</a>
+    <a href="{{ base_path }}links.html">Links</a>
+  </nav>
+
+  <nav class="drawer__bloco" aria-label="Seções e categorias">
+    <h2 class="drawer__titulo">Seções</h2>
+    {% for s in menu.secoes %}
+    <p class="drawer__secao"><a href="{{ base_path }}secao/{{ s.slug }}.html">{{ s.nome }}</a> <span class="drawer__n">{{ s.total }}</span></p>
+    {% if s.categorias %}
+    <ul class="drawer__lista">
+      {% for c in s.categorias %}
+      <li><a href="{{ base_path }}secao/{{ s.slug }}/{{ c.slug }}.html">{{ c.nome }}</a> <span class="drawer__n">{{ c.total }}</span></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    {% endfor %}
+  </nav>
+
+  <nav class="drawer__bloco" aria-label="Autores">
+    <h2 class="drawer__titulo">Autores</h2>
+    <ul class="drawer__lista drawer__lista--solta">
+      {% for a in menu.autores %}
+      <li><a href="{{ base_path }}autor/{{ a.slug }}.html">{{ a.nome }}</a> <span class="drawer__n">{{ a.total }}</span></li>
+      {% endfor %}
+    </ul>
+  </nav>
+</aside>
 
 <div class="wave" aria-hidden="true">
   <svg viewBox="0 0 1200 60" preserveAspectRatio="none">
@@ -53,6 +98,27 @@
 </footer>
 
 {% block scripts %}{% endblock %}
+
+<script>
+(() => {
+  const btn = document.getElementById("menu-btn");
+  const drawer = document.getElementById("drawer");
+  const overlay = document.getElementById("drawer-overlay");
+  const alternar = (abrir) => {
+    document.body.classList.toggle("menu-aberto", abrir);
+    drawer.setAttribute("aria-hidden", String(!abrir));
+    btn.setAttribute("aria-expanded", String(abrir));
+    overlay.hidden = !abrir;
+    if (abrir) drawer.querySelector("a").focus(); else btn.focus();
+  };
+  btn.addEventListener("click", () => alternar(!document.body.classList.contains("menu-aberto")));
+  document.getElementById("drawer-fechar").addEventListener("click", () => alternar(false));
+  overlay.addEventListener("click", () => alternar(false));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && document.body.classList.contains("menu-aberto")) alternar(false);
+  });
+})();
+</script>
 
 <script data-goatcounter="https://alencar.goatcounter.com/count"
         async src="//gc.zgo.at/count.js"></script>

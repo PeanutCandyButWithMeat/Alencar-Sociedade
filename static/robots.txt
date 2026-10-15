@@ -1,0 +1,4 @@
+Sitemap: https://peanutcandybutwithmeat.github.io/Alencar-Sociedade/sitemap.xml
+
+User-agent: *
+Disallow:

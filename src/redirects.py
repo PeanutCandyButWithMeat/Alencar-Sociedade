@@ -1,4 +1,12 @@
-"""Páginas-ponte nos endereços antigos (noticias/<slug>.html) para não quebrar links já divulgados."""
+"""Páginas-ponte nos endereços antigos, para não quebrar links já divulgados.
+
+Dois casos:
+  - config.REDIRECIONAR_ANTIGOS: matérias que circulavam em noticias/<slug>.html
+  - "enderecos_antigos" no frontmatter: sempre que mover uma matéria (mudar de seção,
+    categoria, idioma...), copie o caminho antigo para essa lista antes de mover.
+"""
+import posixpath
+
 import config
 
 MODELO = """<!doctype html>
@@ -12,10 +20,15 @@ MODELO = """<!doctype html>
 
 def gerar_redirecionamentos(materias):
     for m in materias:
-        if m["slug"] not in config.REDIRECIONAR_ANTIGOS:
-            continue
-        relativo = m["caminho"].removeprefix("noticias/")  # relativo à pasta noticias/
-        antigo = config.SAIDA / "noticias" / f"{m['slug']}.html"
-        antigo.parent.mkdir(parents=True, exist_ok=True)
-        antigo.write_text(MODELO.format(canonico=f"{config.SITE_URL}/{m['caminho']}", relativo=relativo),
-                          encoding="utf-8")
+        antigos = list(m.get("enderecos_antigos") or [])
+        if m["slug"] in config.REDIRECIONAR_ANTIGOS:
+            antigos.append(f"noticias/{m['slug']}.html")
+
+        for antigo in dict.fromkeys(antigos):  # sem repetidos, mantendo a ordem
+            if antigo == m["caminho"]:
+                continue  # nunca sobrescreve a própria matéria
+            relativo = posixpath.relpath(m["caminho"], start=posixpath.dirname(antigo))
+            destino = config.SAIDA / antigo
+            destino.parent.mkdir(parents=True, exist_ok=True)
+            destino.write_text(MODELO.format(canonico=f"{config.SITE_URL}/{m['caminho']}", relativo=relativo),
+                               encoding="utf-8")

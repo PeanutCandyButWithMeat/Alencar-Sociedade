@@ -2,7 +2,7 @@ import json
 
 import config
 
-CAMPOS = ("titulo", "categoria", "idioma", "palavras_chave", "resumo")
+CAMPOS = ("titulo", "categoria", "idioma", "palavras_chave", "resumo", "autor", "secao")
 
 
 def gerar_indice_busca(materias):
