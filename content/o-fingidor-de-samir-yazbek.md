@@ -6,9 +6,9 @@ idioma: "PT"
 palavras_chave: ["O Fingidor", "Samir Yazbek", "Fernando Pessoa", "teatro", "indústria cultural", "Adorno", "Horkheimer"]
 data: 2026-10-11
 autor: "Adryan de Alencar"
-tempo_leitura: "3 min de leitura"
+tempo_leitura: "5 min de leitura"
 resumo: "Uma reflexão sobre a peça O Fingidor, de Samir Yazbek, sua capacidade de aproximar Fernando Pessoa do público infantojuvenil e a experiência teatral como contraponto à cultura reificada da indústria cultural."
-destaque: true
+destaque: false
 enderecos_antigos: ["noticias/critica-cultural/pt/o-fingidor-de-samir-yazbek.html"]
 ---
 
