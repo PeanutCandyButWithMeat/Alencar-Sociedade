@@ -6,8 +6,8 @@ idioma: "PT"
 palavras_chave: ["poesia", "poemas", "A Tríade", "Luar", "Primavera", "Eclipse"]
 data: 2026-10-14
 autor: "Adryan de Alencar"
-tempo_leitura: "2 min de leitura"
-resumo: "Três poemas em sequência: Luar, Primavera e Eclipse."
+tempo_leitura: "5 min de leitura"
+resumo: "A Tríade é um conjunto de três poemas (Luar, Primavera e Eclipse) que entrelaçam amor, distância, memória e sofrimento por meio de imagens celestes e fluviais. Entre a Lua, o Sol e o rio, os poemas exploram as relações entre presença e ausência, luz e escuridão, afeto e dor. Em uma sequência marcada por mudanças de tom e pela recorrência de símbolos, a obra reúne diferentes momentos de uma experiência afetiva."
 formato: poema
 ---
 

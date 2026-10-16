@@ -1,5 +1,22 @@
 [
   {
+    "titulo": "'Às Cores Desbotadas' e 'O Volátil Coração'",
+    "categoria": "Poesia",
+    "idioma": "PT",
+    "palavras_chave": [
+      "poesia",
+      "poemas",
+      "paixão",
+      "desejo",
+      "existência",
+      "melancolia"
+    ],
+    "resumo": "Dois poemas que exploram a existência desbotada, a alteridade e a volatilidade da paixão. Em 'Às Cores Desbotadas', o diálogo entre o estrangeiro e uma entidade confronta a insatisfação com a vida, a ausência de paixões e a condição de não pertencimento. Em 'O Volátil Coração', a efemeridade do desejo contrasta com a impossibilidade do amor, enquanto a beleza, a ausência e a passagem do tempo atravessam a experiência de uma voz poética marcada pela melancolia.",
+    "autor": "Adryan de Alencar",
+    "secao": "Arte e Cultura",
+    "url": "arte-e-cultura/poesia/pt/as-cores-desbotadas-e-o-volatil-coracao.html"
+  },
+  {
     "titulo": "A Tríade",
     "categoria": "Poesia",
     "idioma": "PT",
@@ -11,7 +28,7 @@
       "Primavera",
       "Eclipse"
     ],
-    "resumo": "Três poemas em sequência: Luar, Primavera e Eclipse.",
+    "resumo": "A Tríade é um conjunto de três poemas (Luar, Primavera e Eclipse) que entrelaçam amor, distância, memória e sofrimento por meio de imagens celestes e fluviais. Entre a Lua, o Sol e o rio, os poemas exploram as relações entre presença e ausência, luz e escuridão, afeto e dor. Em uma sequência marcada por mudanças de tom e pela recorrência de símbolos, a obra reúne diferentes momentos de uma experiência afetiva.",
     "autor": "Adryan de Alencar",
     "secao": "Arte e Cultura",
     "url": "arte-e-cultura/poesia/pt/a-triade.html"
