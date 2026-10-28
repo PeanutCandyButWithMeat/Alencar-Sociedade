@@ -1,5 +1,5 @@
 ---
-titulo: "Primeiro turno das eleições de 2026, o que isso reflete sobre a democracia no Brasil?"
+titulo: "crise da democracia, fascismo e a epistemologia romântica"
 categoria: "Teoria Política"
 idioma: "PT"
 palavras_chave: ["liberdade negativa", "Bolsonaro", "teoria política", "Lula", "eleições"]

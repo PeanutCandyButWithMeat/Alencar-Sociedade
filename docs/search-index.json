@@ -1,5 +1,23 @@
 [
   {
+    "titulo": "Abraão, Orfeu e o Peso da Fé",
+    "categoria": "Ensaios",
+    "idioma": "PT",
+    "palavras_chave": [
+      "Kierkegaard",
+      "Temor e Tremor",
+      "Abraão",
+      "Orfeu",
+      "fé",
+      "confiança",
+      "mitologia"
+    ],
+    "resumo": "Uma reflexão nascida da leitura de 'Temor e Tremor', de Kierkegaard, que aproxima Abraão e Orfeu: dois homens diante da possibilidade de perder quem amam, e a confiança como condição para não perdê-lo. Abraão confia no absurdo e é recompensado; Orfeu olha para trás e é punido. O texto questiona o critério da fé, que, por justificar qualquer ação, acaba por não criticar nada.",
+    "autor": "Adryan de Alencar",
+    "secao": "Arte e Cultura",
+    "url": "arte-e-cultura/ensaios/pt/abraao-orfeu-e-o-peso-da-fe.html"
+  },
+  {
     "titulo": "'Às Cores Desbotadas' e 'O Volátil Coração'",
     "categoria": "Poesia",
     "idioma": "PT",
@@ -71,7 +89,7 @@
     "url": "arte-e-cultura/critica-cultural/pt/o-fingidor-de-samir-yazbek.html"
   },
   {
-    "titulo": "Primeiro turno das eleições de 2026, o que isso reflete sobre a democracia no Brasil?",
+    "titulo": "crise da democracia, fascismo e a epistemologia romântica",
     "categoria": "Teoria Política",
     "idioma": "PT",
     "palavras_chave": [
