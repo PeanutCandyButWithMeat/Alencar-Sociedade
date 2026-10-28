@@ -26,7 +26,7 @@
       <h2 class="share__titulo">{{ "Share" if en else "Compartilhar" }}</h2>
       <ul class="share__lista">
         <li hidden><button type="button" class="share__btn share__btn--destaque" data-acao="nativo">{{ "Share" if en else "Compartilhar" }}</button></li>
-        <li hidden><button type="button" class="share__btn" data-acao="story">{{ "Story image" if en else "Imagem para Story" }}</button></li>
+        <li hidden><button type="button" class="share__btn" data-acao="story">{{ "Instagram" if en else "Instagram" }}</button></li>
         <li><a class="share__btn" target="_blank" rel="noopener" href="https://bsky.app/intent/compose?text={{ (titulo ~ ' ' ~ og_url)|urlencode }}">Bluesky</a></li>
         <li><a class="share__btn" target="_blank" rel="noopener" href="https://www.linkedin.com/sharing/share-offsite/?url={{ og_url|urlencode }}">LinkedIn</a></li>
         <li><a class="share__btn" target="_blank" rel="noopener" href="https://wa.me/?text={{ (titulo ~ ' ' ~ og_url)|urlencode }}">WhatsApp</a></li>
