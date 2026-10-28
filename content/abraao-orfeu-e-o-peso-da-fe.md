@@ -8,6 +8,7 @@ data: 2026-10-28
 autor: "Adryan de Alencar"
 tempo_leitura: "3 min de leitura"
 resumo: "Uma reflexão nascida da leitura de 'Temor e Tremor', de Kierkegaard, que aproxima Abraão e Orfeu: dois homens diante da possibilidade de perder quem amam, e a confiança como condição para não perdê-lo. Abraão confia no absurdo e é recompensado; Orfeu olha para trás e é punido. O texto questiona o critério da fé, que, por justificar qualquer ação, acaba por não criticar nada."
+destaque: true
 ---
 
 Estava eu lendo Temor e Tremor, de Kierkegaard (na tradução de Maria José Marinho), quando me recordei de uma sucinta reflexão. Depois de apresentar a condição de Abraão, obrigado a sacrificar Isaque, o filósofo cita rapidamente a lenda de Orfeu, da qual costumo me lembrar com frequência (não se questione o porquê; nem mesmo eu saberia explicar). A conexão entre as condições de Orfeu e Abraão é, no mínimo, curiosa, talvez porque a ideia de perder alguém importante por culpa própria seja recorrente em diferentes grupos sociais. Portanto, caro leitor, caso não se recorde de ambas as histórias, farei questão de resumi-las nos próximos parágrafos e, então, contarei qual foi a minha reflexão.
