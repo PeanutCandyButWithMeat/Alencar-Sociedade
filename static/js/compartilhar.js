@@ -15,13 +15,13 @@
   const MAX_CHARS = 320;
 
   const T = EN ? {
-    trecho: "Share excerpt", materia: "Story image", formato: "Format", cor: "Color",
+    trecho: "Share excerpt", materia: "Instagram", formato: "Format", cor: "Color",
     story: "Story", quadrado: "Square", terracota: "Terracotta", creme: "Cream", petroleo: "Teal",
     compartilhar: "Share image", baixar: "Download", copiar: "Copy link",
     copiado: "Link copied", copiadoStory: "Link copied. Paste it in the Story's link sticker.",
     curto: "Excerpt shortened to fit the card.", fechar: "Close",
   } : {
-    trecho: "Compartilhar trecho", materia: "Imagem para Story", formato: "Formato", cor: "Cor",
+    trecho: "Compartilhar trecho", materia: "Instagram", formato: "Formato", cor: "Cor",
     story: "Story", quadrado: "Quadrado", terracota: "Terracota", creme: "Creme", petroleo: "Petróleo",
     compartilhar: "Compartilhar imagem", baixar: "Baixar", copiar: "Copiar link",
     copiado: "Link copiado", copiadoStory: "Link copiado. Cole no adesivo de link do Story.",
