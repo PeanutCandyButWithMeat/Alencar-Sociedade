@@ -692,3 +692,175 @@ a.tag--category:hover { background: var(--petrol); color: var(--cream); }
   color: var(--terracotta);
   text-decoration: none;
 }
+
+/* ---------- Compartilhar ---------- */
+
+.share {
+  margin: 40px 0 8px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(42, 24, 16, 0.15);
+}
+
+.share__titulo {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-synthesis: none;
+  font-size: 1.05rem;
+  color: var(--terracotta);
+  margin: 0 0 12px;
+}
+
+.share__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.share__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0 16px;
+  font: inherit;
+  font-size: 0.9rem;
+  border: 1px solid var(--petrol);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--petrol);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.share__btn:hover { background: var(--petrol); color: var(--cream); }
+.share__btn:disabled { opacity: 0.5; cursor: wait; }
+
+.share__btn--destaque {
+  background: var(--terracotta);
+  border-color: var(--terracotta);
+  color: var(--cream);
+}
+.share__btn--destaque:hover { background: var(--ink); border-color: var(--ink); }
+.share__btn[hidden] { display: none; }
+
+/* botão que aparece ao selecionar texto */
+.sel-share {
+  position: absolute;
+  z-index: 50;
+  min-height: 40px;
+  padding: 0 16px;
+  font: inherit;
+  font-size: 0.85rem;
+  border: 0;
+  border-radius: 999px;
+  background: var(--terracotta);
+  color: var(--cream);
+  box-shadow: 0 4px 14px rgba(42, 24, 16, 0.3);
+  cursor: pointer;
+}
+.sel-share:hover { background: var(--ink); }
+.sel-share[hidden] { display: none; }
+
+/* diálogo do cartão */
+.cartao {
+  width: min(440px, calc(100vw - 24px));
+  max-height: calc(100dvh - 24px);
+  padding: 0;
+  border: 0;
+  border-radius: 8px;
+  background: var(--cream);
+  color: var(--ink);
+  box-shadow: 0 20px 60px rgba(42, 24, 16, 0.45);
+}
+.cartao::backdrop { background: rgba(42, 24, 16, 0.6); }
+.cartao__corpo { padding: 16px 18px 18px; }
+
+.cartao__topo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.cartao__titulo {
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-synthesis: none;
+  font-size: 1.1rem;
+  color: var(--terracotta);
+  margin: 0;
+}
+
+.cartao__fechar {
+  width: 44px;
+  height: 44px;
+  font-size: 1.6rem;
+  line-height: 1;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  cursor: pointer;
+}
+
+.cartao__previa {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background: rgba(42, 24, 16, 0.08);
+}
+
+.cartao__previa canvas {
+  display: block;
+  max-width: 100%;
+  max-height: 46vh;
+  width: auto;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 10px rgba(42, 24, 16, 0.25);
+}
+
+.cartao__aviso { margin: 0 0 10px; font-size: 0.82rem; color: var(--ink-soft); }
+
+.cartao__grupo {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.cartao__rotulo { min-width: 64px; font-size: 0.8rem; color: var(--ink-soft); }
+
+.opcao {
+  min-height: 40px;
+  padding: 0 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  border: 1px solid var(--petrol);
+  border-radius: 3px;
+  background: transparent;
+  color: var(--petrol);
+  cursor: pointer;
+}
+.opcao[aria-pressed="true"] { background: var(--petrol); color: var(--cream); }
+
+.cartao__acoes { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.cartao__acoes .share__btn { flex: 1 1 auto; }
+
+.share-toast {
+  position: fixed;
+  left: 50%;
+  bottom: 24px;
+  transform: translateX(-50%);
+  z-index: 100;
+  max-width: calc(100vw - 32px);
+  padding: 10px 16px;
+  border-radius: 6px;
+  background: var(--ink);
+  color: var(--cream);
+  font-size: 0.9rem;
+}
